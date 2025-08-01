@@ -39,7 +39,7 @@ fn main(x: u32, y: pub u32) {
     assert(struct_1.y == 30);
     assert(struct_1.z == 80);
     assert(struct_1.nested_struct.small_array == [5, 10]);
-    assert(struct_1.nested_struct.big_array == [15, 20, 25, 30, 35]);
+    unsafe { verify_assert(struct_1.nested_struct.big_array == [15, 20, 25, 30, 35]); }
 }
 
 // Meaningless mapping to test whether the values returned are what we expect
@@ -69,3 +69,4 @@ fn map_fields(mut input: ParentStruct) -> ParentStruct {
 
     input
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

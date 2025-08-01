@@ -77,9 +77,9 @@ fn assert_refcount<T>(array: [T; 3], mut expected: u32, expect_copy: bool) {
             // Brillig doesn't print the actual & expected arguments on assertion failure
             println(f"actual = {count}, expected = {expected}");
         }
-        assert_eq(count, expected);
+        assert(count == expected);
     } else {
-        assert_eq(count, 0);
+        assert(count == 0);
     }
 }
 
@@ -97,8 +97,8 @@ fn regression_7297() {
 
     // Mutation of the original could occur if we double decremented the RC and then went back to 1 by accident.
     // For this to come out we have to run the test with `--inliner-aggressiveness -9223372036854775808`
-    assert_eq(array[0], 6, "the original should not be mutated by copy_mut, only borrow_mut_two");
-    assert_eq(array_2[0], 4, "the copy should have the expected content");
+    assert(array[0] == 6);
+    unsafe { verify_assert(array_2[0] == 4); };
 
     if std::runtime::is_unconstrained() {
         // Double decrementing the RC could occur if we don't realize that array mutation made a copy,
@@ -106,22 +106,21 @@ fn regression_7297() {
         // This assertion is redundant with the one following it, but it's here because `assert_eq` doesn't print
         // what actual values that cause it to fail, so this is a way to highlight the bug about the refcount of
         // still live arrays going to zero, without any doubt that it's just not 1, as it should be.
-        assert(
+        unsafe { verify_assert(
             refcount_1 != 0,
-            "borrow_mut_two should create a fresh array and not decrease its RC",
-        );
+        ); }
+            //"borrow_mut_two should create a fresh array and not decrease its RC",
 
         // `5` here is higher than in other inliner settings. This is likely due to references getting optimized out,
         // and mutations being optimized and removed so the original array ends up being aliased more.
-        assert_eq(
-            refcount_1,
-            5,
-            "There is 1 clone after `borrow_mut_two` and before `refcount_1` is defined (cloned before array_refcount call)",
-        );
-        assert_eq(
-            refcount_2,
-            refcount_1 + 3,
-            "after refcount_1 we clone once in passing array to copy_mut, once to array_refcount after, and once within copy_mut",
-        );
+        unsafe { verify_assert(
+            refcount_1 == 5
+        ); }
+            //"There is 1 clone after `borrow_mut_two` and before `refcount_1` is defined (cloned before array_refcount call)",
+        unsafe { verify_assert(
+            refcount_2 == refcount_1 + 3
+        ); }
+            // "after refcount_1 we clone once in passing array to copy_mut, once to array_refcount after, and once within copy_mut",
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

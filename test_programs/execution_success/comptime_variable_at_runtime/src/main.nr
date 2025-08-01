@@ -9,3 +9,4 @@ fn main() {
 
     println(x); // prints 2
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

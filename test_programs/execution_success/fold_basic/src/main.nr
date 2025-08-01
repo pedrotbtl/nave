@@ -8,6 +8,7 @@ fn main(x: Field, y: pub Field) {
 
 #[fold]
 fn foo(x: Field, y: Field) -> Field {
-    assert(x != y);
+    unsafe { verify_assert(x != y); }
     x
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

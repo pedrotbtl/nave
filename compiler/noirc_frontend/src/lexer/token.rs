@@ -1117,6 +1117,11 @@ pub enum SecondaryAttributeKind {
 
     /// Allow chosen warnings to happen so they are silenced.
     Allow(String),
+
+    // Or we can use some existing attribute
+    Precondition(Expression),
+
+    Postcondition(Expression),
 }
 
 impl SecondaryAttributeKind {
@@ -1146,6 +1151,8 @@ impl SecondaryAttributeKind {
             SecondaryAttributeKind::Varargs => "varargs".to_string(),
             SecondaryAttributeKind::UseCallersScope => "use_callers_scope".to_string(),
             SecondaryAttributeKind::Allow(k) => format!("allow({k})"),
+            SecondaryAttributeKind::Precondition(_) => "precondition".to_string(),
+            SecondaryAttributeKind::Postcondition(_) => "postcondition".to_string(),
         }
     }
 }

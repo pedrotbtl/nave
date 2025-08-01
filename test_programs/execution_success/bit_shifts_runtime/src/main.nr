@@ -21,8 +21,9 @@ fn main(x: u64, y: u8, z: i16, u: i64) {
 
     assert(x >> (x as u8) == 0);
 
-    assert_eq(z >> 3, -97);
+    assert(z >> 3 == -97);;
 
     assert(z >> 16 == -1);
-    assert(-z >> x as u8 == 0);
+    unsafe { verify_assert(-z >> x as u8 == 0); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

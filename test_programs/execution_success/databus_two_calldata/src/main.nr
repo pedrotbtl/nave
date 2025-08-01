@@ -13,3 +13,4 @@ fn main(
     result[x[3]] = z[x[3]];
     result
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

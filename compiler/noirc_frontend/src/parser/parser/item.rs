@@ -97,6 +97,8 @@ impl<'a> Parser<'a> {
         let mut attributes = Vec::new();
         loop {
             if let Some(doc_comment) = self.parse_outer_doc_comment() {
+                // Here we can find pre and post condition comments and 
+                // tie them to the immediate next function to be parsed?
                 doc_comments.push(doc_comment);
             } else if let Some(attribute) = self.parse_attribute() {
                 attributes.push(attribute);

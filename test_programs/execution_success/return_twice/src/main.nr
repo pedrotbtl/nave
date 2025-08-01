@@ -3,3 +3,4 @@ pub fn main(in0: Field) -> pub (Field, Field) {
     let out1 = (in0 * in0);
     (out0, out1)
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

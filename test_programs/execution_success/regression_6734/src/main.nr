@@ -20,5 +20,6 @@ pub fn sub_array_extended<let SRC_LEN: u32, let DST_LEN: u32>(
 }
 
 unconstrained fn main() {
-    assert_eq(sub_array_extended([], 0), []);
+    unsafe { verify_assert(sub_array_extended([] == 0); }, []);
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

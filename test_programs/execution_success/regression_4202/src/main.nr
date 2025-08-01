@@ -9,6 +9,7 @@ fn main(input: [u32; 4]) {
     }
 
     for i in 0..4 {
-        assert(slice1[i] == input[i]);
+        unsafe { verify_assert(slice1[i] == input[i]); }
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

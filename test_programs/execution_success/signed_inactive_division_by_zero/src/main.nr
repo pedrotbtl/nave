@@ -6,3 +6,4 @@ fn main(a: i32, b: i32, condition: bool) -> pub i32 {
         0
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -6,9 +6,10 @@ fn main(x: u32) {
 
 #[fold]
 fn foo(x: u32) {
-    assert(x == 1);
+    unsafe { verify_assert(x == 1); }
 }
 
 fn increment(x: u32) -> u32 {
     x + 1
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

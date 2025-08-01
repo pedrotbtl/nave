@@ -13,6 +13,7 @@ members = [
     # Crates related to tooling built on top of the Noir compiler
     "tooling/lsp",
     "tooling/debugger",
+    "tooling/acir_checker",
     "tooling/ast_fuzzer",
     "tooling/ast_fuzzer/fuzz",
     "tooling/greybox_fuzzer",
@@ -30,6 +31,7 @@ members = [
     "tooling/artifact_cli",
     "tooling/profiler",
     "tooling/inspector",
+    "tooling/acir_checker",
     # ACVM
     "acvm-repo/acir_field",
     "acvm-repo/acir",
@@ -103,6 +105,7 @@ noirc_printable_type = { path = "compiler/noirc_printable_type" }
 
 # Noir tooling workspace dependencies
 noir_greybox_fuzzer = { path = "tooling/greybox_fuzzer" }
+acir_checker = { path = "tooling/acir_checker" }
 nargo = { path = "tooling/nargo" }
 nargo_cli = { path = "tooling/nargo_cli" }
 nargo_expand = { path = "tooling/nargo_expand" }

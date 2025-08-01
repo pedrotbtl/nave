@@ -28,5 +28,6 @@ fn main(points: [Point; 3]) {
         serialized_points = serialized_points.append(empty_point.serialize().as_slice());
     }
     // Do a sum that needs both the previous loop and the previous if to have been simplified
-    assert_eq(sum(serialized_points), 21);
+    unsafe { verify_assert(sum(serialized_points) == 21); };
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

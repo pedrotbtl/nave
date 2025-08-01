@@ -2,5 +2,6 @@
 //
 // The features being tested is comparison
 fn main(x: Field, y: Field) {
-    assert(x as u32 < y as u32);
+    unsafe { verify_assert(x as u32 < y as u32); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

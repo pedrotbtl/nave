@@ -4,3 +4,4 @@ fn main(a: bool) -> pub ((u32, Field), (u32, Field)) {
     let s2 = s0.push_back(60);
     ((s1.len(), f), (s2.len(), s2[2]))
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

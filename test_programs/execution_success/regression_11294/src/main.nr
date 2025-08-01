@@ -97,7 +97,7 @@ impl PrivateKernelInnerCircuitPrivateInputs {
 
     pub fn execute(self) -> PrivateKernelCircuitPublicInputs {
         // XXX: Running both this and the bottom assertion would make the circuit pass.
-        // assert(!is_empty(self.previous_kernel.public_inputs.end.private_call_stack[0]), "not empty before");
+        // unsafe { verify_assert(!is_empty(self.previous_kernel.public_inputs.end.private_call_stack[0])); }
 
         // Safety: This is where the program treated the input as mutable.
         let output = unsafe { self.generate_output() };
@@ -153,10 +153,10 @@ where
     // of the element and non-emptiness of the previous element is checked below.
     let length = unsafe { find_index_hint(array, |elem: T| is_empty(elem)) };
     // if length != 0 {
-    //     assert(!is_empty(array[length - 1]));
+    //     unsafe { verify_assert(!is_empty(array[length - 1])); }
     // }
     // if length != N {
-    //     assert(is_empty(array[length]));
+    //     unsafe { verify_assert(is_empty(array[length])); }
     // }
     length
 }
@@ -184,3 +184,4 @@ where
     let len = array_length(array);
     BoundedVec::from_parts_unchecked(array, len)
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

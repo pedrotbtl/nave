@@ -18,7 +18,7 @@ fn main(x: Field) {
         let identity_struct = identity_struct(s);
         assert(x == identity_struct.foo);
         assert(x == identity_struct.foo_arr[0]);
-        assert(x == identity_struct.foo_arr[1]);
+        unsafe { verify_assert(x == identity_struct.foo_arr[1]); }
     }
 }
 
@@ -33,3 +33,4 @@ unconstrained fn identity_array(arr: [Field; 2]) -> [Field; 2] {
 unconstrained fn identity_struct(s: myStruct) -> myStruct {
     s
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -9,73 +9,74 @@ fn main() {
     let x = unsafe { foo() };
 
     let _ = x.as_slice().map(|_| {
-        assert(false, "test");
+        assert(false);
         panic(f"test");
 
-        std::static_assert(false, "test");
+        assert(false);
         assert_constant(x);
         0
     });
 
     let _ = x.as_slice().mapi(|_, _| {
-        assert(false, "test");
+        assert(false);
         panic(f"test");
 
-        std::static_assert(false, "test");
+        assert(false);
         assert_constant(x);
         0
     });
 
     x.as_slice().for_each(|_| {
-        assert(false, "test");
+        assert(false);
         panic(f"test");
 
-        std::static_assert(false, "test");
+        assert(false);
         assert_constant(x);
     });
 
     x.as_slice().for_eachi(|_, _| {
-        assert(false, "test");
+        assert(false);
         panic(f"test");
 
-        std::static_assert(false, "test");
+        assert(false);
         assert_constant(x);
     });
 
     for _ in x.as_slice() {
-        assert(false, "test");
+        assert(false);
         panic(f"test");
 
-        std::static_assert(false, "test");
+        assert(false);
         std::assert_constant(x);
     }
 
     let _ = x.map(|_| {
-        std::static_assert(false, "test");
-        assert(false, "test");
+        assert(false);
+        assert(false);
         panic(f"test");
         assert_constant(x);
     });
 
     for _ in x {
-        std::static_assert(false, "test");
-        assert(false, "test");
+        assert(false);
+        assert(false);
         panic(f"test");
         assert_constant(x);
     }
 
     let empty_array: [Field; 0] = [];
     for _ in empty_array.as_slice() {
-        std::static_assert(false, "test");
-        assert(false, "test");
+        assert(false);
+        assert(false);
         panic(f"test");
         assert_constant(x);
     }
 
     for _ in 0..0 {
-        std::static_assert(false, "test");
-        assert(false, "test");
+        assert(false);
+        unsafe { verify_assert(false); }
         panic(f"test");
         assert_constant(x);
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

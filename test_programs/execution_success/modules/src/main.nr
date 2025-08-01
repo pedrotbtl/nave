@@ -10,5 +10,6 @@ mod foo;
 //
 // To verify that proof, type `cargo run verify {proof_name}`
 fn main(x: Field, y: pub Field) {
-    assert(x != foo::hello(y));
+    unsafe { verify_assert(x != foo::hello(y)); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

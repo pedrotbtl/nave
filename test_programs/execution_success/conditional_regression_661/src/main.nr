@@ -12,7 +12,7 @@ fn main(a: u32, mut c: [u32; 4]) {
 fn test5(a: u32) {
     if a > 1 {
         let q = a / 2;
-        assert(q == 2);
+        unsafe { verify_assert(q == 2); }
     }
 }
 
@@ -25,3 +25,4 @@ fn issue_661_bar(a: [u32; 4]) -> [u32; 4] {
     b[0] = a[0] + 1;
     b
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

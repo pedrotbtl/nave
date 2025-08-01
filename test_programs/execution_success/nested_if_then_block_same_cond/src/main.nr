@@ -10,3 +10,4 @@ fn main(a: bool, b: [[bool; 2]; 3]) -> pub [bool; 2] {
         b[0]
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

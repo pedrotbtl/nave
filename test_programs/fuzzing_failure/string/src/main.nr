@@ -1,6 +1,6 @@
 // This program will fail when the input is "kev_hates_rust"
 #[fuzz]
-fn strings(a: str<14>) {
+fn main(a: str<14>) {
     let start = "kev_loves_rust".as_bytes();
     let mut password_bytes: [u8; 14] = [0; 14];
     for i in 0..14 {
@@ -20,5 +20,8 @@ fn strings(a: str<14>) {
             password_bytes[i] = start[i];
         }
     }
-    assert(a.as_bytes() != password_bytes);
+    // assert(a.as_bytes() != password_bytes);
+    unsafe { verify_assert(a.as_bytes() != password_bytes); }
 }
+
+unconstrained fn verify_assert(b: bool) {}

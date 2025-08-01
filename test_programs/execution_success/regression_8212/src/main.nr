@@ -1,3 +1,4 @@
 fn main(x: i8) {
-    assert_eq(x as i16, -1);
+    unsafe { verify_assert(x as i16 == -1); };
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

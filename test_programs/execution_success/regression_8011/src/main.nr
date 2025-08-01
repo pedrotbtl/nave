@@ -1,7 +1,7 @@
 unconstrained fn main() -> pub u32 {
     let s1 = loop_with_negative_literal();
     let s2 = loop_with_u128_literal();
-    assert_eq(s1, s2);
+    unsafe { verify_assert(s1 == s2); };
     s1
 }
 
@@ -24,3 +24,4 @@ fn loop_with_u128_literal() -> u32 {
     }
     sum
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

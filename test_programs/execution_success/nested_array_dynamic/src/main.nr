@@ -71,5 +71,6 @@ fn main(mut x: [Foo; 4], y: pub u32) {
     assert(foo_parents[1].foos[1].b[2] == 5000);
     // Set a dynamic array value
     foo_parents[y - 2].foos[y - 3].b = foo_parents[y - 2].foos[y - 2].b;
-    assert(foo_parents[1].foos[0].b == [20, 19, 5000]);
+    unsafe { verify_assert(foo_parents[1].foos[0].b == [20, 19, 5000]); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

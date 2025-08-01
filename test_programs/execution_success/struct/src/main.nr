@@ -69,7 +69,8 @@ fn main(x: Field, y: Field) {
     let Animal { legs, eyes } = get_dog();
     let six = legs + eyes as Field;
 
-    assert(six == 6);
+    unsafe { verify_assert(six == 6); }
 
     let Animal { legs: _, eyes: _ } = get_dog();
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

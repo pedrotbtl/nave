@@ -1,3 +1,4 @@
 fn main(x: u1) {
-    assert(!x == 0);
+    unsafe { verify_assert(!x == 0); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

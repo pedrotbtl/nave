@@ -20,7 +20,7 @@ struct PublicMutable<T> {
 
 impl<T> PublicMutable<T> {
     pub fn new(storage_slot: Field) -> Self {
-        assert(storage_slot != 0, "Storage slot 0 not allowed. Storage slots must start from 1.");
+        assert(storage_slot != 0);
         PublicMutable { storage_slot }
     }
 
@@ -38,5 +38,6 @@ fn main(value: Field) {
     let ps: PublicMutable<Field> = PublicMutable::new(27);
 
     // error here
-    assert(ps.read() == value);
+    unsafe { verify_assert(ps.read() == value); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

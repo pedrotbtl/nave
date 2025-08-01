@@ -153,7 +153,7 @@ unconstrained fn main(kernel_data: DataToHash) -> pub [Field; NUM_FIELDS_PER_SHA
     }
 
     offset += NUM_UNENCRYPTED_LOGS_HASHES_PER_TX * NUM_FIELDS_PER_SHA256;
-    assert_eq(offset, TX_EFFECT_HASH_INPUT_SIZE); // Sanity check
+    unsafe { verify_assert(offset == TX_EFFECT_HASH_INPUT_SIZE); }; // Sanity check
     let mut hash_input_flattened =
         [0; TX_EFFECT_HASH_FULL_FIELDS * 32 + TX_EFFECT_HASH_LOG_FIELDS * 16];
     for offset in 0..TX_EFFECT_HASH_FULL_FIELDS {
@@ -175,3 +175,4 @@ unconstrained fn main(kernel_data: DataToHash) -> pub [Field; NUM_FIELDS_PER_SHA
     let blake2_digest = std::hash::blake2s(hash_input_flattened);
     U256::from_bytes32(blake2_digest).to_u128_limbs()
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

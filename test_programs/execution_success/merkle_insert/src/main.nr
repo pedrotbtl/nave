@@ -9,7 +9,7 @@ fn main(
     assert(old_root == compute_merkle_root(old_leaf, index, old_hash_path));
 
     let calculated_root = compute_merkle_root(leaf, index, old_hash_path);
-    assert(new_root == calculated_root);
+    unsafe { verify_assert(new_root == calculated_root); }
 }
 
 fn compute_merkle_root<let N: u32>(leaf: Field, index: Field, hash_path: [Field; N]) -> Field {
@@ -26,3 +26,4 @@ fn compute_merkle_root<let N: u32>(leaf: Field, index: Field, hash_path: [Field;
     }
     current
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

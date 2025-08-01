@@ -9,3 +9,4 @@ unconstrained fn main() -> pub str<3> {
     }
     (*a)
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

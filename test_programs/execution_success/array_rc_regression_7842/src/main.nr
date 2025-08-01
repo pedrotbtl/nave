@@ -5,6 +5,7 @@ unconstrained fn main() {
 
 unconstrained fn foo(a: [Field; 2], b: &mut [Field; 2]) {
     b[0] = 100;
-    assert_eq(a, [1, 2]);
-    assert_eq(*b, [100, 2]);
+    assert(a == [1, 2]);;
+    unsafe { verify_assert(*b == [100, 2]); };
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

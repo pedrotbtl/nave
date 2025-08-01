@@ -143,7 +143,11 @@ impl Parser<'_> {
             self.parse_meta_attribute(name, start_location)
         } else if let Some(path) = self.parse_path_no_turbofish() {
             if let Some(ident) = path.as_ident() {
-                if ident.as_str() == "test" {
+                if ident.as_str() == "postcondition" {
+                    println!("Attribute identifier {}", ident.as_str());
+                    self.parse_verify_attribute(start_location)
+                }
+                else if ident.as_str() == "test" {
                     // The test attribute is the only secondary attribute that has `a = b` in its syntax
                     // (`should_fail_with = "..."``) so we parse it differently.
                     self.parse_test_attribute(start_location)
@@ -154,7 +158,7 @@ impl Parser<'_> {
                 } else {
                     // Every other attribute has the form `name(arg1, arg2, .., argN)`
                     self.parse_ident_attribute_other_than_test_and_fuzz(ident, start_location)
-                }
+                } 
             } else {
                 // This is a Meta attribute with the syntax `path(arg1, arg2, .., argN)`
                 let name = MetaAttributeName::Path(path);
@@ -168,6 +172,18 @@ impl Parser<'_> {
             self.expected_label(ParsingRuleLabel::Path);
             self.parse_tag_attribute(start_location)
         }
+    }
+
+    fn parse_verify_attribute(&mut self, start_location: Location) -> Attribute {
+        // let arguments = self.parse_arguments().unwrap_or_default();
+        let arguments = self.parse_expression();
+        println!("Verify args: {:?}", arguments);
+
+        // location for testing only
+        let location = self.location_since(start_location);
+        let kind = SecondaryAttributeKind::Postcondition(arguments.unwrap());
+        let attr = SecondaryAttribute { kind, location };
+        Attribute::Secondary(attr)
     }
 
     fn parse_meta_attribute(
@@ -275,6 +291,22 @@ impl Parser<'_> {
                 let attr = Attribute::Secondary(attr);
                 self.parse_no_args_attribute(ident, arguments, attr)
             }
+            // "precondition" => {
+            //     let arg_clone = arguments[0].clone();
+            //     let kind = SecondaryAttributeKind::Precondition(arg_clone);
+            //     let attr = SecondaryAttribute { kind, location };
+            //     let attr = Attribute::Secondary(attr);
+            //     attr
+            //     // self.parse_no_args_attribute(ident, arguments, attr)
+            // },
+            // "postcondition" => {
+            //     let arg_clone = arguments[0].clone();
+            //     let kind = SecondaryAttributeKind::Postcondition(arg_clone);
+            //     let attr = SecondaryAttribute { kind, location };
+            //     let attr = Attribute::Secondary(attr);
+            //     attr
+            //     // self.parse_no_args_attribute(ident, arguments, attr)
+            // }
             _ => {
                 let kind = SecondaryAttributeKind::Meta(MetaAttribute {
                     name: MetaAttributeName::Path(Path::from_ident(ident.clone())),
@@ -506,6 +538,8 @@ impl Parser<'_> {
 
 #[cfg(test)]
 mod tests {
+    use acvm::acir::native_types::Expression;
+
     use crate::{
         parser::{Parser, parser::tests::expect_no_errors},
         token::{Attribute, FunctionAttributeKind, SecondaryAttributeKind, TestScope},
@@ -563,9 +597,11 @@ mod tests {
     }
 
     #[test]
-    fn parses_inner_attribute_deprecated() {
-        let src = "#![deprecated]";
-        let expected = SecondaryAttributeKind::Deprecated(None);
+    fn parses_inner_attribute_postcondition() {
+        let src = "#![postcondition x > 20]";
+        let mut expr_parser = Parser::for_str_with_dummy_file("x > 20");
+        let exp = expr_parser.parse_expression();
+        let expected = SecondaryAttributeKind::Postcondition(exp.unwrap());
         parse_inner_secondary_attribute_no_errors(src, expected);
     }
 

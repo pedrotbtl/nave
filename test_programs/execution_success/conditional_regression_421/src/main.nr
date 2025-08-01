@@ -5,6 +5,7 @@ fn main(a: u32, mut c: [u32; 4]) {
     } else if a == c[1] {
         assert(c[1] == 0);
     } else if a == c[2] {
-        assert(c[2] == 0);
+        unsafe { verify_assert(c[2] == 0); }
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

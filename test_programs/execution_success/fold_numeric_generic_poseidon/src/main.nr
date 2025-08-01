@@ -29,3 +29,4 @@ fn main(
 
     result
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -31,3 +31,4 @@ fn main(x: [Field; 2]) {
 // during name resolution. The fix was to initialize structs during def collection instead.
 type Regression2502Alias = Regression2502;
 struct Regression2502 {}
+unconstrained fn verify_assert(b: bool) { assert(false); }

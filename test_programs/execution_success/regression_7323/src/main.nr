@@ -9,3 +9,4 @@ fn main(x: Field) {
         _ => (),
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

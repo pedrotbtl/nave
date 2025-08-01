@@ -3,3 +3,4 @@ fn main(mut idx: u32, y: call_data(0) [u32; 2], z: call_data(1) [u32; 4]) -> ret
     let b = z[idx];
     a + b
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

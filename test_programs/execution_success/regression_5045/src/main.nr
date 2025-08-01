@@ -15,6 +15,7 @@ fn main(is_active: bool) {
             [a, bad],
             [EmbeddedCurveScalar { lo: 1, hi: 0 }, EmbeddedCurveScalar { lo: 1, hi: 0 }],
         );
-        assert(e.x != d.x);
+        unsafe { verify_assert(e.x != d.x); }
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

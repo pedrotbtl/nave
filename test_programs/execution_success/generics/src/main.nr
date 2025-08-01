@@ -64,7 +64,7 @@ fn main(x: Field, y: Field) {
     // Test that turbofish works on methods and that it uses the generics on the methods
     // While still handling the generic on the impl (T in this case) that is implicitly added
     // to the method.
-    assert(bar1.zeroed::<u32>() == 0);
+    unsafe { verify_assert(bar1.zeroed::<u32>() == 0); }
 
     let _ = regression_2055([1, 2, 3]);
 }
@@ -80,3 +80,4 @@ fn regression_2055<let LEN: u32>(bytes: [u8; LEN]) -> Field {
     }
     f
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

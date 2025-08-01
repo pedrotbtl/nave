@@ -90,18 +90,21 @@ impl<F: AcirField, B: BlackBoxFunctionSolver<F>> AcirContext<F, B> {
                 }
             })?;
 
+        // for acir-checker 
+        // For generation of verify function definition
+        
         // Optimistically try executing the brillig now, if we can complete execution they just return the results.
         // This is a temporary measure pending SSA optimizations being applied to Brillig which would remove constant-input opcodes (See #2066)
         //
         // We do _not_ want to do this in the situation where the `main` function is unconstrained, as if execution succeeds
         // the entire program will be replaced with witness constraints to its outputs.
-        if attempt_execution {
-            if let Some(brillig_outputs) =
-                self.execute_brillig(&generated_brillig.byte_code, &brillig_inputs, &outputs)
-            {
-                return Ok(brillig_outputs);
-            }
-        }
+        // if attempt_execution {
+        //     if let Some(brillig_outputs) =
+        //         self.execute_brillig(&generated_brillig.byte_code, &brillig_inputs, &outputs)
+        //     {
+        //         return Ok(brillig_outputs);
+        //     }
+        // }
 
         // Otherwise we must generate ACIR for it and execute at runtime.
         let mut brillig_outputs = Vec::new();
@@ -339,6 +342,7 @@ fn execute_brillig<F: AcirField, B: BlackBoxFunctionSolver<F>>(
 
     // Run the Brillig VM on these inputs, bytecode, etc!
     let vm_status = vm.process_opcodes();
+    println!("N vm status {:?}", vm_status);
 
     // Check the status of the Brillig VM.
     // It may be finished, in-progress, failed, or may be waiting for results of a foreign call.

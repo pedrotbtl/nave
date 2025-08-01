@@ -39,5 +39,6 @@ unconstrained fn wrapper(x: Field, y: Field) {
 
 unconstrained fn entry_point_one_diff_global(x: Field, y: Field) {
     let z = THREE + x + y;
-    assert(z == 4);
+    unsafe { verify_assert(z == 4); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

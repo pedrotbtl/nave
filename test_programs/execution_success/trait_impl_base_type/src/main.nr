@@ -111,5 +111,6 @@ fn main(x: u32) {
     assert(some_func.to_field() == 17);
 
     let mut y = 0_u64;
-    assert(y.to_field() == 66);
+    unsafe { verify_assert(y.to_field() == 66); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

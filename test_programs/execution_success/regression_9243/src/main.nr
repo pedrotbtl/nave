@@ -3,7 +3,9 @@ fn main() {
         let start = 169386661893075804622328296976770135180_u128 % 9_u128;
         let end = idx_b % 9_u128;
         for _ in start..end {
-            assert((idx_b <= 115517568315105269094017991206916906366_u128), "UHL");
+            unsafe { verify_assert(idx_b <= 115517568315105269094017991206916906366_u128); }
+            // , "UHL"
         }
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -153,6 +153,7 @@ impl<'a> Parser<'a> {
         let inner_doc_comments = self.parse_inner_doc_comments();
         let items = self.parse_module_items(nested);
 
+        // Use comments info or convert them here somehow - if using inner comments
         ParsedModule { items, inner_doc_comments }
     }
 

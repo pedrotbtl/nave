@@ -3,7 +3,7 @@ fn main() {
     assert(store_through_outer_pointer());
 
     assert(comptime { store_through_middle_pointer() });
-    assert(store_through_middle_pointer());
+    unsafe { verify_assert(store_through_middle_pointer()); }
 }
 
 fn store_through_outer_pointer() -> bool {
@@ -21,3 +21,4 @@ fn store_through_middle_pointer() -> bool {
     println(*b);
     *b
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

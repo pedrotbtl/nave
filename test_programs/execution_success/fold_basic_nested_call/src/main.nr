@@ -11,6 +11,7 @@ fn func_with_nested_foo_call(x: Field, y: Field) -> Field {
 
 #[fold]
 fn foo(x: Field, y: Field) -> Field {
-    assert(x != y);
+    unsafe { verify_assert(x != y); }
     x
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

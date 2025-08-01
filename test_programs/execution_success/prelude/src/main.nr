@@ -29,3 +29,4 @@ mod b {
         println("42");
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

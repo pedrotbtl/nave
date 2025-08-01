@@ -7,3 +7,4 @@ unconstrained fn main(start: i64, end: i64) -> pub u32 {
     }
     sum
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

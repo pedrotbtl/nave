@@ -26,6 +26,7 @@ mod expand_cmd;
 mod export_cmd;
 mod fmt_cmd;
 mod fuzz_cmd;
+mod fv_cmd;
 mod generate_completion_script_cmd;
 mod info_cmd;
 mod init_cmd;
@@ -110,6 +111,7 @@ enum NargoCommand {
     Debug(debug_cmd::DebugCommand),
     Test(test_cmd::TestCommand),
     Fuzz(fuzz_cmd::FuzzCommand),
+    FormalVerify(fv_cmd::FormalVerifyCommand),
     Info(info_cmd::InfoCommand),
     Lsp(lsp_cmd::LspCommand),
     #[command(hide = true)]
@@ -154,6 +156,7 @@ pub(crate) fn start_cli() -> eyre::Result<()> {
         NargoCommand::Export(args) => with_workspace(args, config, export_cmd::run),
         NargoCommand::Test(args) => with_workspace(args, config, test_cmd::run),
         NargoCommand::Fuzz(args) => with_workspace(args, config, fuzz_cmd::run),
+        NargoCommand::FormalVerify(args) => with_workspace(args, config, fv_cmd::run),
         NargoCommand::Info(args) => with_workspace(args, config, info_cmd::run),
         NargoCommand::Lsp(_) => lsp_cmd::run(),
         NargoCommand::Dap(args) => dap_cmd::run(args),

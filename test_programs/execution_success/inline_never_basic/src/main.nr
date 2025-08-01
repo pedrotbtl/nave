@@ -4,5 +4,6 @@ fn main(x: Field, y: pub Field) {
 
 #['inline(never)]
 fn basic_check(x: Field, y: Field) {
-    assert(x != y);
+    unsafe { verify_assert(x != y); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

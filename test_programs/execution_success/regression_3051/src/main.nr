@@ -22,3 +22,4 @@ fn main() {
     std::println(1.foo());
     std::println(1.bar());
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

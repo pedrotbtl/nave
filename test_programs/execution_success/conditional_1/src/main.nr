@@ -87,5 +87,6 @@ fn main(a: u32, mut c: [u32; 4], x: [u8; 5], result: pub [u8; 32]) {
             x = i as u32 + 2;
         }
     }
-    assert(x == 0);
+    unsafe { verify_assert(x == 0); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

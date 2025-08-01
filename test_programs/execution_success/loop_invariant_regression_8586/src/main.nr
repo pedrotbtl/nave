@@ -8,3 +8,4 @@ fn main(a: pub bool) {
         };
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -11,6 +11,7 @@ fn main(x: Field, y: pub Field, enable: bool) -> pub [Field; NUM_RESULTS] {
 
 #[fold]
 fn return_value(x: Field, y: Field) -> Field {
-    assert(x != y);
+    unsafe { verify_assert(x != y); }
     x
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -30,5 +30,6 @@ unconstrained fn inner_func(x: Field, y: Field) {
 
 unconstrained fn nested_inner_func(x: Field, y: Field) {
     let z = THREE + x + y;
-    assert(z == 4);
+    unsafe { verify_assert(z == 4); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

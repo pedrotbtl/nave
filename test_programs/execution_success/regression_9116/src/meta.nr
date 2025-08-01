@@ -93,3 +93,4 @@ pub(crate) comptime fn derive_deserialize(s: TypeDefinition) -> Quoted {
         }
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

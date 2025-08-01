@@ -19,5 +19,6 @@ fn no_predicate_function(enable: Field) -> Field {
 }
 
 unconstrained fn fail(_: Field) {
-    assert(false);
+    unsafe { verify_assert(false); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

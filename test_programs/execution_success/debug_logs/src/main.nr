@@ -138,3 +138,4 @@ fn regression_4967() {
     );
     println(slice_of_tuples_coerced);
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

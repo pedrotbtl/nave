@@ -20,3 +20,4 @@ fn bar() -> bool {
 fn qux() -> bool {
     true
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

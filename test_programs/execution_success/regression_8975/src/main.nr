@@ -19,3 +19,4 @@ unconstrained fn func_2(mut b: [&mut bool; 1]) {
         }
     };
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

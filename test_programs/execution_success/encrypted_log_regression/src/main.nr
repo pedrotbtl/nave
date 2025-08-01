@@ -84,7 +84,7 @@ fn compute_encrypted_log<let M: u32>(
         // but in this reproduction the size seems to be statically known regardless.
         // let size = M - 32 - HEADER_SIZE - OVERHEAD_PADDING;
 
-        assert_eq(size, incoming_body_ciphertext.len(), "ciphertext length mismatch");
+        unsafe { verify_assert(size == incoming_body_ciphertext.len(); });
         for i in 0..size {
             encrypted_bytes[offset + i] = incoming_body_ciphertext[i];
         }
@@ -92,3 +92,4 @@ fn compute_encrypted_log<let M: u32>(
 
     encrypted_bytes
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

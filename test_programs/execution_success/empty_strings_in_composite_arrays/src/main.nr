@@ -5,3 +5,4 @@ unconstrained fn func_2(b: [(bool, str<0>, str<0>); 1]) -> (str<0>, str<0>) {
     println(b);
     (b[0].1, b[0].2)
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

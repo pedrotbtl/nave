@@ -25,7 +25,7 @@ unconstrained fn swap_entry_point(x: u32, y: u32) {
     assert(swapped.1 == x);
     let swapped_twice = swap(swapped.0, swapped.1);
     assert(swapped_twice.0 == x);
-    assert(swapped_twice.1 == y);
+    unsafe { verify_assert(swapped_twice.1 == y); }
 }
 
 fn level_3(x: u32) -> u32 {
@@ -43,3 +43,4 @@ fn level_1(x: u32) -> u32 {
 unconstrained fn deep_entry_point(x: u32) -> u32 {
     level_1(x + 1)
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

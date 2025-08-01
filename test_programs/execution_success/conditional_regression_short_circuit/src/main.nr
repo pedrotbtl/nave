@@ -27,10 +27,11 @@ fn call_intrinsic(x: [u8; 5], result: [u8; 32]) {
     let mut digest = std::hash::blake3(x);
     digest[0] = 5;
     digest = std::hash::blake3(x);
-    assert(digest == result);
+    unsafe { verify_assert(digest == result); }
 }
 
 fn test4() -> [u32; 4] {
     let b: [u32; 4] = [1, 2, 3, 4];
     b
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

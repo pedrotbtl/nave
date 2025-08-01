@@ -137,5 +137,6 @@ fn main(x: [u8; 5], z: Field, u: i16, v: i16) {
     assert(u % -11 == 4);
     assert(-u % -11 == -4);
     assert(u % -11 == u % (v + 2));
-    assert(-u % -11 == -u % (v + 2));
+    unsafe { verify_assert(-u % -11 == -u % (v + 2)); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

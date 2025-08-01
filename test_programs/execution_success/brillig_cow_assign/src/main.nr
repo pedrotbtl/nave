@@ -15,8 +15,9 @@ unconstrained fn main() {
     // arr        = [27, 27, 27, 27, 27, 27, 27, 27, 27, 27]
     // mid_change = [27, 27, 27, 27, 27, 0, 0, 0, 0, 0]
     let modified_i = N / 2 + 1;
-    assert_eq(arr[modified_i], 27);
+    assert(arr[modified_i] == 27);
 
     // Fail here!
-    assert(mid_change[modified_i] != 27);
+    unsafe { verify_assert(mid_change[modified_i] != 27); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

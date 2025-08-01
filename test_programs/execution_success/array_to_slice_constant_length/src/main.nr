@@ -10,3 +10,4 @@ fn main(val: Field) {
         assert_constant(array.as_slice().len());
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

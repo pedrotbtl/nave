@@ -8,3 +8,4 @@ fn main(a: u32) -> pub Field {
         -1
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

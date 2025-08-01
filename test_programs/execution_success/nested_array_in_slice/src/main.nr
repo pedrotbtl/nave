@@ -45,5 +45,6 @@ fn main(y: u32) {
     assert(x[y - 3].bar.inner == [100, 101, 102]);
     assert(x[y - 2].bar.inner == [103, 104, 105]);
     assert(x[y - 1].bar.inner == [106, 107, 108]);
-    assert(x[y].bar.inner == [109, 110, 111]);
+    unsafe { verify_assert(x[y].bar.inner == [109, 110, 111]); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

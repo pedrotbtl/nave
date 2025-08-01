@@ -830,7 +830,13 @@ impl<'a> Lexer<'a> {
             _ => None,
         };
         let comment = self.eat_while(None, |ch| ch != '\n');
-
+        
+        // Normal line comment (and doc comment) outside the 
+        // function definition can be found here
+        if comment.contains("@p") {
+            println!("Lexer comment: {}", comment);
+        }
+        
         if !comment.is_ascii() {
             let span = Span::from(start..self.position);
             return Err(LexerErrorKind::NonAsciiComment { location: self.location(span) });

@@ -5,3 +5,4 @@ fn main(v1: u16, v2: bool) -> pub u8 {
         0
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

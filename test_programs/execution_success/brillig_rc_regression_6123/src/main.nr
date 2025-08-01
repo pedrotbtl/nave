@@ -36,6 +36,7 @@ unconstrained fn main() {
     swap_items(&mut builder.note_hashes, 1, 0);
 
     for i in 0..1 {
-        assert_eq(note_hashes[i], original_first_note_hash);
+        unsafe { verify_assert(note_hashes[i] == original_first_note_hash); };
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -4,5 +4,6 @@ fn main(x: bool, y: [bool; 2]) {
     }
 
     assert(x);
-    assert(y[0] != y[1]);
+    unsafe { verify_assert(y[0] != y[1]); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

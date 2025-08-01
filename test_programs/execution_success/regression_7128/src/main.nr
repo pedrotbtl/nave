@@ -20,7 +20,8 @@ fn main(in0: Field) -> pub Field {
 
     out0 = (tmp2 - tmp1);
 
-    assert(out0 == 0, "completeness violation");
+    unsafe { verify_assert(out0 == 0); }
 
     out0
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

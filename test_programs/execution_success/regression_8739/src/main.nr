@@ -13,3 +13,4 @@ unconstrained fn func_2() {
         }
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

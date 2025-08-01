@@ -1,6 +1,6 @@
 // This program will fail when the input is 0xdeadbeef
 #[fuzz]
-fn fuzz(a: u64) {
+fn main(a: u64) {
     if a >= 2147483648 {
         let a = a - 2147483648;
         if a >= 1073741824 {
@@ -79,9 +79,9 @@ fn fuzz(a: u64) {
                                                                                                                                         >= 1 {
                                                                                                                                         let a = a
                                                                                                                                             - 1;
-                                                                                                                                        assert(
+                                                                                                                                        unsafe { verify_assert(
                                                                                                                                             false,
-                                                                                                                                        );
+                                                                                                                                        );}
                                                                                                                                     }
                                                                                                                                 }
                                                                                                                             }
@@ -115,3 +115,5 @@ fn fuzz(a: u64) {
         }
     }
 }
+
+unconstrained fn verify_assert(b: bool) {}

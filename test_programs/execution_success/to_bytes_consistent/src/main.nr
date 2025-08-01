@@ -8,6 +8,7 @@ fn main(x: Field) {
     let constant_byte_array: [u8; 31] = x_as_constant.to_be_bytes();
     assert(constant_byte_array.len() == byte_array.len());
     for i in 0..constant_byte_array.len() {
-        assert(constant_byte_array[i] == byte_array[i]);
+        unsafe { verify_assert(constant_byte_array[i] == byte_array[i]); }
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

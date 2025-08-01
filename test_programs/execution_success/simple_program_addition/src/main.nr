@@ -3,3 +3,4 @@
 fn main(x: Field) -> pub Field {
     x + 1
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

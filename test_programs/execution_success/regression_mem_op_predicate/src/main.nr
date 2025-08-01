@@ -4,5 +4,6 @@ fn main(mut x: [u32; 5], idx: u32) {
     if idx as u32 < 3 {
         x[idx] = 10;
     }
-    assert(x[4] == 111);
+    unsafe { verify_assert(x[4] == 111); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

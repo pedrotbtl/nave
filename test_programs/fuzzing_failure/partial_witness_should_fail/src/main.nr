@@ -2,7 +2,7 @@
 // This program is expected to fail, unless one of two combinations of inputs is provided (all true or all but 0th input is true)
 // The fuzzer should find the case where the program does not fail. It is important that the program has 2 conditions, otherwise the compiler will solve the single condition for brillig
 // and the fuzzer without partial witness parsing for ACIR will find the solution trivially.
-fn fuzz_partial_witness_fail(
+fn main(
     a0: bool,
     a1: bool,
     a2: bool,
@@ -36,7 +36,7 @@ fn fuzz_partial_witness_fail(
     a30: bool,
     a31: bool,
 ) {
-    assert(
+    unsafe { verify_assert(
         a0
             & a1
             & a2
@@ -103,5 +103,7 @@ fn fuzz_partial_witness_fail(
                     & a30
                     & a31
             ),
-    );
+    ); }
 }
+
+unconstrained fn verify_assert(b: bool) {}

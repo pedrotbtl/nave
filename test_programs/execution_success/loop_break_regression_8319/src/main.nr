@@ -40,3 +40,4 @@ unconstrained fn func_4(a: [u32; 3]) {
         }
     }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

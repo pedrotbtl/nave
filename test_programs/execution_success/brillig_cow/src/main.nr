@@ -44,5 +44,6 @@ unconstrained fn modify_in_unconstrained(
 
 unconstrained fn main(original: [Field; ARRAY_SIZE], index: u32, expected_result: ExecutionResult) {
     assert(expected_result.is_equal(modify_in_unconstrained(original, index)));
-    assert(expected_result.is_equal(modify_in_inlined_constrained(original, index)));
+    unsafe { verify_assert(expected_result.is_equal(modify_in_inlined_constrained(original, index))); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

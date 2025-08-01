@@ -9,3 +9,4 @@ unconstrained fn func_2(a: unconstrained fn(u128) -> bool) -> bool {
 unconstrained fn func_3(_b: unconstrained fn(unconstrained fn(u128) -> bool) -> bool) -> i64 {
     0
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

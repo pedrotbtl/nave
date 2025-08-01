@@ -1,6 +1,6 @@
 // This program will fail when all the inputs are true
 #[fuzz]
-fn fuzz(
+fn main(
     a_00: bool,
     a_01: bool,
     a_02: bool,
@@ -27,7 +27,7 @@ fn fuzz(
     a_23: bool,
     a_24: bool,
 ) {
-    assert(
+    unsafe { verify_assert(
         !(
             a_00
                 & a_01
@@ -56,4 +56,7 @@ fn fuzz(
                 & a_24
         ),
     );
+    }
 }
+
+unconstrained fn verify_assert(b: bool) {}

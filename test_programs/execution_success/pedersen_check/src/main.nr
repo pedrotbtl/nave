@@ -4,7 +4,7 @@ fn main(x: Field, y: Field, salt: Field, out_x: Field, out_y: Field, out_hash: F
     assert(res.y == out_y);
 
     let res_hash = std::hash::pedersen_hash_with_separator([x, y], 0);
-    assert_eq(res_hash, out_hash);
+    assert(res_hash == out_hash);
 
     assert(res_hash != res.x);
 
@@ -15,5 +15,6 @@ fn main(x: Field, y: Field, salt: Field, out_x: Field, out_y: Field, out_hash: F
     }
     state += salt;
     let hash = std::hash::pedersen_commitment([state]);
-    assert(std::hash::pedersen_commitment([43]).x == hash.x);
+    unsafe { verify_assert(std::hash::pedersen_commitment([43]).x == hash.x); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

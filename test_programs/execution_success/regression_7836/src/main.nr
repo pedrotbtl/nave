@@ -6,6 +6,7 @@ fn main(x: u32) {
 }
 
 fn foo(input: u32) -> u32 {
-    assert(input != 0);
+    unsafe { verify_assert(input != 0); }
     input % 100
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

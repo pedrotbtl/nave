@@ -1,0 +1,6 @@
+[package]
+name = "res_country"
+type = "bin"
+authors = [""]
+
+[dependencies]

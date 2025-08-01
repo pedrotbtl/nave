@@ -9,5 +9,6 @@ unconstrained fn main(x: Field) {
             break;
         }
     }
-    assert(count == 0);
+    unsafe { verify_assert(count == 0); }
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

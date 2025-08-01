@@ -14,3 +14,4 @@ unconstrained fn main(x: u32) -> pub str<3> {
     }
     "SQF"
 }
+unconstrained fn verify_assert(b: bool) { assert(false); }

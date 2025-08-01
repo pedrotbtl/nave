@@ -2,11 +2,9 @@ use noirc_errors::{Located, Location};
 
 use crate::{
     ast::{
-        AssignStatement, BinaryOp, BinaryOpKind, Expression, ExpressionKind, ForBounds,
-        ForLoopStatement, ForRange, Ident, InfixExpression, LValue, LetStatement, Statement,
-        StatementKind, WhileStatement,
+        AssignStatement, BinaryOp, BinaryOpKind, BlockExpression, CallExpression, Expression, ExpressionKind, ForBounds, ForLoopStatement, ForRange, Ident, InfixExpression, LValue, LetStatement, Path, PathKind, PathSegment, Statement, StatementKind, UnsafeExpression, WhileStatement
     },
-    parser::{ParserErrorReason, labels::ParsingRuleLabel},
+    parser::{labels::ParsingRuleLabel, ParserErrorReason},
     token::{Attribute, Keyword, Token, TokenKind},
 };
 
@@ -25,21 +23,100 @@ impl Parser<'_> {
         }
     }
 
+    pub(crate) fn parse_comments(&mut self) -> Option<Statement> {
+        let loc = self.previous_token_location;
+        let mut iter_lines = self.current_token_comments.lines();
+        let mut new_comments = String::new();
+        let mut ret = None;
+        for line in &mut iter_lines {
+            let comment = line.trim();
+            // println!("Parsing: {}", comment);
+            if comment.starts_with("@assert"){
+                ret = Self::parse_verification_statement(comment, "verify_assert".to_string(), loc);
+                break;
+            } else if comment.starts_with("@assume") {
+                ret = Self::parse_verification_statement(comment, "verify_assume".to_string(), loc);
+                break;
+            } else {
+                new_comments += line;
+            }
+        }
+        new_comments.extend(iter_lines);
+        self.current_token_comments = new_comments;
+        ret
+    }
+
+    fn parse_verification_statement(comment: &str, func_name: String, loc: Location) -> Option<Statement> {
+        let mut ret = None;
+        if let Some((_, expression_str)) = comment.split_once(" ") {
+            println!("Found assert {}", comment);
+            // println!("Found assert at location {:?}: {}", loc, expression_str);
+            let mut expr_parser = Parser::for_str_with_dummy_file(expression_str);
+            let expression_opt =
+                expr_parser.parse_expression();
+            if let Some(expression) =  expression_opt {
+                ret = Some(Self::create_func_call(func_name, expression, loc));
+            }
+        }
+        ret
+    }
+
+    fn create_func_call(func_name: String, exp: Expression, location: Location) -> Statement {
+        let func = Box::new(Expression::new(
+            ExpressionKind::Variable(Path {
+                segments: vec![PathSegment {generics: None, ident: Ident::new(func_name, location), location}],
+                kind: PathKind::Plain,
+                location,
+                kind_location: location,
+            }),
+            location,
+        ));
+        let call_expression = CallExpression { arguments: vec![exp], func, is_macro_call: false };
+
+        Statement {
+            kind: StatementKind::Expression(Expression {
+                kind: ExpressionKind::Unsafe(UnsafeExpression {
+                    block: BlockExpression {
+                        statements: vec![Statement {
+                            kind: StatementKind::Expression(Expression {
+                                kind: ExpressionKind::Call(Box::new(call_expression)),
+                                location: location,
+                            }),
+                            location,
+                        }],
+                    },
+                    unsafe_keyword_location: location,
+                }),
+                location: location,
+            }),
+            location,
+        }
+    }
+
     /// Statement = Attributes StatementKind ';'?
     pub(crate) fn parse_statement(&mut self) -> Option<(Statement, (Option<Token>, Location))> {
         loop {
             // Like in Rust, we allow parsing doc comments on top of a statement but they always produce a warning.
-            self.warn_on_outer_doc_comments();
+            // self.warn_on_outer_doc_comments();
 
             if !self.current_token_comments.is_empty() {
+                if let Some(statement) = self.parse_comments() {
+                    return Some((statement, (None, self.current_token_location)));
+                }
                 self.statement_comments = Some(std::mem::take(&mut self.current_token_comments));
             } else {
                 self.statement_comments = None;
             }
 
             let attributes = self.parse_attributes();
+            // Can use the attribute parsing here?? - but where to insert those?
+            // can use parse_function to get the location of start and
+            // end of function -- and possibly the return statement if any.
+
+
             let start_location = self.current_token_location;
             let kind = self.parse_statement_kind(attributes);
+            // println!("StatementKind: {:?}", kind);
             self.statement_comments = None;
 
             let (semicolon_token, semicolon_location) = if self.at(Token::Semicolon) {
