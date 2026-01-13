@@ -28,6 +28,5 @@ fn main(
         signature_3,
         hashed_message_3,
     );
-    unsafe { verify_assert(valid_signature_3); }
+    assert(valid_signature_3);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

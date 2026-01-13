@@ -20,4 +20,3 @@ fn main(a: Field) -> pub Field {
         (-(-a))
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

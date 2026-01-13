@@ -17,6 +17,5 @@ fn main(x: Field, y: pub Field) {
     let x = unsafe { baz(x) };
     foo(x);
     foo(y);
-    unsafe { verify_assert(x != y); }
+    assert(x != y);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

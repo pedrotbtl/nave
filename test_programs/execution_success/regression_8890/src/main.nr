@@ -2,7 +2,7 @@
 // found in Veridise Audit.
 
 fn main(x: Field, y: pub Field) -> pub Field {
-    unsafe { verify_assert(x != y); }
+    assert(x != y);
     let mut f = [my_fun];
     f[0] = my_fun2;
     (f[0])(x)
@@ -15,4 +15,3 @@ fn my_fun(x: Field) -> Field {
 fn my_fun2(x: Field) -> Field {
     x + 2
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

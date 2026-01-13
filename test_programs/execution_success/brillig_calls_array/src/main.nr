@@ -32,6 +32,5 @@ unconstrained fn another_entry_point(x: [u32; 3]) {
     // x should be unchanged
     assert(x[0] == 1);
     assert(x[1] == 2);
-    unsafe { verify_assert(x[2] == 3); }
+    assert(x[2] == 3);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

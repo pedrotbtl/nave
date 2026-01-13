@@ -83,9 +83,9 @@ fn assert_refcount<T>(slice: [T], mut expected: u32, expect_copy: bool) {
         if count != expected {
             println(f"actual = {count}, expected = {expected}");
         }
-        assert(count == expected);
+        assert_eq(count, expected);
     } else {
-        assert(count == 0);
+        assert_eq(count, 0);
     }
 }
 
@@ -99,23 +99,24 @@ fn regression_7297() {
     let slice_2 = copy_mut(slice, refcount_1 + 1);
     let refcount_2 = slice_refcount(slice);
 
-    assert(slice[0] == 6);
-    unsafe { verify_assert(slice_2[0] == 4); };
+    assert_eq(slice[0], 6, "the original should not be mutated by copy_mut, only borrow_mut_two");
+    assert_eq(slice_2[0], 4, "the copy should have the expected content");
 
     if std::runtime::is_unconstrained() {
-        unsafe { verify_assert(
-            refcount_1 != 0
-        ); }
-            //"borrow_mut_two should create a fresh slice and not decrease its RC",
+        assert(
+            refcount_1 != 0,
+            "borrow_mut_two should create a fresh slice and not decrease its RC",
+        );
 
-        unsafe { verify_assert(
-            refcount_1 == 2
-        ); }
-            // "There is 1 clone after `borrow_mut_two` and before `refcount_1` is defined (cloned before slice_refcount call)",
-        unsafe { verify_assert(
-            refcount_2 == refcount_1 + 3
-        ); }
-        //    "after refcount_1 we clone once in passing slice to copy_mut, once to slice_refcount after, and once within copy_mut",
+        assert_eq(
+            refcount_1,
+            2,
+            "There is 1 clone after `borrow_mut_two` and before `refcount_1` is defined (cloned before slice_refcount call)",
+        );
+        assert_eq(
+            refcount_2,
+            refcount_1 + 3,
+            "after refcount_1 we clone once in passing slice to copy_mut, once to slice_refcount after, and once within copy_mut",
+        );
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

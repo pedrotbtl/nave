@@ -33,4 +33,3 @@ fn main(pair: (Field, Field), x: [(u8, u8, u8); 2], struct_pair: (Foo, Bar)) -> 
 
     (u, v as u8)
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

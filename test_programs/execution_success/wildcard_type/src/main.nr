@@ -21,4 +21,3 @@ fn foo(x: Field) -> [bar; 4] {
         bar { enable: [false, false, false, false], data: [x + 4, x - 1], pad: 0 },
     ]
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

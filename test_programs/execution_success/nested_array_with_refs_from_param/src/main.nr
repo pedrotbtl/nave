@@ -5,4 +5,3 @@ unconstrained fn main() -> pub bool {
 fn func_3(b: &mut bool) -> [[&mut bool; 1]] {
     [[b]]
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

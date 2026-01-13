@@ -7,4 +7,3 @@ impl crate1::MyTrait for MyStruct {
         self.Q += 10;
     }
 }
-unconstrained fn verify_assert(b: bool) {}

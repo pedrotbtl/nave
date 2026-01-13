@@ -1,5 +1,5 @@
 fn must_be_zero(x: u8) {
-    assert(x == 0);
+    unsafe { verify_assert(x == 0); }
 }
 
 fn test3(x: u8) {
@@ -19,12 +19,12 @@ fn main(a: u32, mut c: [u32; 4]) {
     if a == 0 {
         c = test4();
     } else {
-        assert(c[1] != 2);
+        unsafe { verify_assert(c[1] != 2); }
     }
     if false {
         c[1] = 5;
     }
-    assert(c[1] == 2);
+    unsafe { verify_assert(c[1] == 2); }
 
     test5(4);
     // Test case for function synchronisation
@@ -34,7 +34,7 @@ fn main(a: u32, mut c: [u32; 4]) {
     } else {
         c_sync = foo2() + foo2();
     }
-    assert(c_sync == 6);
+    unsafe { verify_assert(c_sync == 6); }
 }
 
 fn test5(a: u32) {

@@ -4978,8 +4978,7 @@ checksum = "afab94fb28594581f62d981211a9a4d53cc8130bbcbbb89a0440d9b8e81a7746"
 [[package]]
 name = "rsmt2"
 version = "0.16.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2efb7d3e5fdbdc6a38a6026853350e3fa03f8ff791affe6f5aa5f2d590216f9e"
+source = "git+https://github.com/pedrotbtl/rsmt2.git#a102087ac0d4781b65cbc6c0162e2fc1d90be180"
 dependencies = [
  "error-chain",
 ]

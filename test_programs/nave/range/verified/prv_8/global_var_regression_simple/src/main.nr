@@ -8,7 +8,7 @@ fn main(x: Field, y: pub Field) {
         }
     }
     assert(!acc.lt(x));
-    assert(x != y);
+    unsafe { verify_assert(x != y); }
 
     dummy_again(x, y);
 }
@@ -20,7 +20,7 @@ fn dummy_again(x: Field, y: Field) {
             acc += EXPONENTIATE[i][j];
         }
     }
-    assert(x != y);
+    unsafe { verify_assert(x != y); }
     unsafe { verify_assert(!acc.lt(x)); }
 }
 unconstrained fn verify_assert(b: bool) { assert(false); }

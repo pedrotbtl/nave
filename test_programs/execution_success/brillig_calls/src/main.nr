@@ -58,4 +58,3 @@ unconstrained fn level_1(x: u32) -> u32 {
 unconstrained fn deep_entry_point(x: u32) -> u32 {
     level_1(x + 1)
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

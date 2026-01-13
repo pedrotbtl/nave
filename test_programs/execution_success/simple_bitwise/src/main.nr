@@ -7,4 +7,3 @@ fn main(a: bool, b: bool, c: u8, d: u8) -> pub u8 {
     let z = c | d;
     (i as u8) + (j as u8) + (k as u8) + x + y + z
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

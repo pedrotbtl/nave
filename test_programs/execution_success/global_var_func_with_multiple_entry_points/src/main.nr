@@ -24,6 +24,5 @@ unconstrained fn entry_point_two(x: Field, y: Field) {
 
 unconstrained fn inner_func(x: Field, y: Field) {
     let z = THREE + x + y;
-    unsafe { verify_assert(z == 4); }
+    assert(z == 4);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -59,7 +59,7 @@ fn test_array_functions() {
     // opened #2121 for it
     // https://github.com/noir-lang/noir/issues/2121
     // let descending = myarray.sort_via(|a, b| a >= b);
-    // unsafe { verify_assert(descending == [3, 2, 1]); }
+    // assert(descending == [3, 2, 1]);
     assert(evens.map(|n| n / 2) == myarray);
     assert(evens.map(|n| n / two) == myarray);
 }
@@ -90,6 +90,5 @@ fn regression_2154() {
 
     let closure_if_else = if x > 2 { || x } else { || x + 2342 };
 
-    unsafe { verify_assert(closure_if_else() == 32); }
+    assert(closure_if_else() == 32);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

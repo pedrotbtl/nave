@@ -14,4 +14,3 @@ fn main(a: [u16; 3], b: [bool; 1]) -> pub bool {
 unconstrained fn func_1(a: [u16; 3], b: bool) -> [bool; 1] {
     [false]
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

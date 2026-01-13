@@ -1,6 +1,0 @@
-[package]
-name = "check_age"
-type = "bin"
-authors = [""]
-
-[dependencies]

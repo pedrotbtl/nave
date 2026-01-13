@@ -4,6 +4,5 @@
 // The line below indicates that we would like to pull in the standard library dependency.
 fn main(x: [u8; 5], result: [u8; 32]) {
     let digest = std::hash::blake2s(x);
-    unsafe { verify_assert(digest == result); }
+    assert(digest == result);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

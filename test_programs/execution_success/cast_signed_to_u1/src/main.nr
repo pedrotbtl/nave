@@ -7,13 +7,13 @@ fn main(
     minus_two: i32,
     minus_three: i32,
 ) {
-    assert(zero as u1 == 0);
-    assert(one as u1 == 1);
-    assert(two as u1 == 0);
-    assert(three as u1 == 1);
-    assert(minus_one as u1 == 1);
-    assert(minus_two as u1 == 0);
-    assert(minus_three as u1 == 1);
+    assert_eq(zero as u1, 0);
+    assert_eq(one as u1, 1);
+    assert_eq(two as u1, 0);
+    assert_eq(three as u1, 1);
+    assert_eq(minus_one as u1, 1);
+    assert_eq(minus_two as u1, 0);
+    assert_eq(minus_three as u1, 1);
 
     let zero: i32 = 0;
     let one: i32 = 1;
@@ -22,12 +22,11 @@ fn main(
     let minus_one: i32 = -1;
     let minus_two: i32 = -2;
     let minus_three: i32 = -3;
-    assert(zero as u1 == 0);
-    assert(one as u1 == 1);
-    assert(two as u1 == 0);
-    assert(three as u1 == 1);
-    assert(minus_one as u1 == 1);
-    assert(minus_two as u1 == 0);
-    unsafe { verify_assert(minus_three as u1 == 1); };
+    assert_eq(zero as u1, 0);
+    assert_eq(one as u1, 1);
+    assert_eq(two as u1, 0);
+    assert_eq(three as u1, 1);
+    assert_eq(minus_one as u1, 1);
+    assert_eq(minus_two as u1, 0);
+    assert_eq(minus_three as u1, 1);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

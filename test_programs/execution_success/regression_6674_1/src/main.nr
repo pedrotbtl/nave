@@ -81,6 +81,5 @@ unconstrained fn main() {
     output_composer.l2_to_l1_msgs = sort_by(output_composer.l2_to_l1_msgs);
     output_composer.public_call_requests = sort_by(output_composer.public_call_requests);
 
-    unsafe { verify_assert(previous_kernel.public_call_requests.storage[1] == 1); };
+    assert_eq(previous_kernel.public_call_requests.storage[1], 1, "equality");
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

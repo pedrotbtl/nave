@@ -21,7 +21,7 @@ fxhash.workspace = true
 acir.workspace = true
 logos = "0.13.0"
 # smtlib = "0.3.0"
-rsmt2 = "0.16.2"
+rsmt2 = { git = "https://github.com/pedrotbtl/rsmt2.git"}
 itertools = "0.14.0"
 anyhow = { version = "1.0", default-features = false }
 pest = "2.8.1"

@@ -63,4 +63,3 @@ fn baz() {
 fn qux() {
     println("bye");
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

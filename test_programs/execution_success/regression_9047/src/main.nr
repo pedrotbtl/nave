@@ -9,4 +9,3 @@ fn main() -> pub str<2> {
 unconstrained fn func_1_proxy() -> bool {
     false
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -7,6 +7,5 @@ fn main(mut x: i8, mut y: i8, z: i8) {
     assert(-y < -x);
     assert((z > x) == false);
     assert(x <= s1);
-    unsafe { verify_assert(z < x - y - s2); }
+    assert(z < x - y - s2);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

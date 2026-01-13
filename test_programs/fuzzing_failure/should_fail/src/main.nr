@@ -1,6 +1,6 @@
 // This program is expected to fail unless all the inputs are true, which is the cast that the fuzzer should find
 #[fuzz(should_fail)]
-fn main(
+fn fuzz(
     a_00: bool,
     a_01: bool,
     a_02: bool,
@@ -27,7 +27,7 @@ fn main(
     a_23: bool,
     a_24: bool,
 ) {
-    unsafe { verify_assert(
+    assert(
         (
             a_00
                 & a_01
@@ -55,7 +55,5 @@ fn main(
                 & a_23
                 & a_24
         ),
-    ); }
+    );
 }
-
-unconstrained fn verify_assert(b: bool) {}

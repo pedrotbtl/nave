@@ -4,7 +4,7 @@
 fn main(x: Field) {
     // Safety: testing context
     unsafe {
-        unsafe { verify_assert(4 == conditional(x == 1)); }
+        assert(4 == conditional(x == 1));
     }
 }
 
@@ -15,4 +15,3 @@ unconstrained fn conditional(x: bool) -> Field {
         5
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

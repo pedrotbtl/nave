@@ -16,11 +16,10 @@ impl<let A: u32, let B: u32> Trait for Foo<A, B> {
 
 fn main() {
     let x = Foo::<10, 20>::foo();
-    unsafe { verify_assert(x == 30); };
+    assert_eq(x, 30);
 
     comptime {
         let x = Foo::<10, 20>::foo();
-        unsafe { verify_assert(x == 30); };
+        assert_eq(x, 30);
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

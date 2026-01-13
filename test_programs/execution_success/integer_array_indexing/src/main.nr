@@ -8,4 +8,3 @@ fn main(arr: [Field; ARRAY_LEN], x: u32) -> pub Field {
 
     value + x as Field
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

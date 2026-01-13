@@ -2,7 +2,6 @@
 //
 // The features being tested is assertion
 fn main(x: Field, y: pub Field) {
-    assert(x == y);
-    unsafe { verify_assert(x == y); };
+    assert(x == y, "x and y are not equal");
+    assert_eq(x, y, "x and y are not equal");
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

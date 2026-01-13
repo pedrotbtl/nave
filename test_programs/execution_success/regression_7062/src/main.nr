@@ -4,8 +4,7 @@ fn main(value: Field, index: u32) {
     // Safety: n/a
     unsafe { store(args) };
     // Dummy test to remove the 'underconstraint bug'
-    unsafe { verify_assert(args[0] + args[1] != 0); }
+    assert(args[0] + args[1] != 0);
 }
 
 pub unconstrained fn store(_: [Field]) {}
-unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -5,6 +5,5 @@ fn main(mut x: u32, y: u32, z: u32) {
     x *= x; //144
     x *= x; //20736
     x *= x; //429 981 696
-    unsafe { verify_assert(x == z); }
+    assert(x == z);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

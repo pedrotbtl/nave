@@ -7,7 +7,7 @@ fn main(x: [u32; 3]) {
         assert(entry_point(x[0]) == 7);
         assert(entry_point(x[1]) == 8);
         assert(entry_point(x[2]) == 9);
-        unsafe { verify_assert(entry_point(42) == 0); }
+        assert(entry_point(42) == 0);
     }
 }
 
@@ -36,4 +36,3 @@ unconstrained fn entry_point(x: u32) -> u32 {
 
     result
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

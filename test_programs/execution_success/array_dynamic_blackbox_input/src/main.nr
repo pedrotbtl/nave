@@ -23,6 +23,5 @@ fn compute_root(leaf: [u8; 32], path: [u8; 64], _index: u32, root: [u8; 32]) {
     }
 
     // Regression for issue #4258
-    unsafe { verify_assert(root == current); }
+    assert(root == current);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

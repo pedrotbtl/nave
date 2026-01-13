@@ -23,6 +23,5 @@ fn test_u16(x: u16) {
     assert(shift == 8);
     assert(shift >> (x as u8) == small_int);
     assert(shift >> 15 == 0);
-    unsafe { verify_assert(shift << 15 == 0); }
+    assert(shift << 15 == 0);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

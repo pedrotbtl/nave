@@ -15,4 +15,3 @@ unconstrained fn func_1(mut a: [[bool; 2]; 2]) -> [bool; 2] {
     a[1][1] = true;
     [true, false]
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

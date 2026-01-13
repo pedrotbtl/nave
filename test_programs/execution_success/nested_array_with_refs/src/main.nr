@@ -7,4 +7,3 @@ fn main() -> pub bool {
         false
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

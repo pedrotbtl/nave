@@ -17,7 +17,7 @@ fn main(message: pub str<11>, y: Field, hex_as_string: str<4>, hex_as_field: Fie
     std::print(x);
 
     let array = [1, 2, 3, 5, 8];
-    assert(y == 5) // Change to y != 5 to see how the later print statements are not called
+    assert(y == 5); // Change to y != 5 to see how the later print statements are not called
     std::println(array);
     std::print(array);
 
@@ -31,7 +31,7 @@ fn main(message: pub str<11>, y: Field, hex_as_string: str<4>, hex_as_field: Fie
     std::print(hash);
 
     assert(hex_as_string == "0x41");
-    // assert(hex_as_string != 0x41) This will fail with a type mismatch between str[4] and Field
+    // assert(hex_as_string != 0x41); This will fail with a type mismatch between str[4] and Field
     assert(hex_as_field == 0x41);
 
     // Single digit & odd length hex literals are valid
@@ -69,7 +69,7 @@ fn failed_constraint(hex_as_field: Field) {
     // a `Failed constraint` compile error will be caught before this `println`
     // is executed as the input will be a constant.
     std::println(hex_as_field);
-    unsafe { verify_assert(hex_as_field != 0x41); }
+    assert(hex_as_field != 0x41);
 }
 
 #[test]
@@ -82,4 +82,3 @@ struct Test {
     b: Field,
     c: [Field; 2],
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -15,7 +15,7 @@ impl Hasher {
 fn main(expected: pub Field, first: Field) {
     let mut hasher = Hasher::new();
     hasher.add(first);
-    assert(hasher.fields[0] == expected);
+    unsafe { verify_assert(hasher.fields[0] == expected); }
 
     regression_4967();
 }

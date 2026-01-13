@@ -5,4 +5,3 @@ fn main(b: [[u1; 1]; 1]) -> pub [[u1; 1]; 1] {
         b
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

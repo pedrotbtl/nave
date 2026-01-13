@@ -6,5 +6,3 @@ fn main(a: [u8; 4]) {
     /// assert a != b;
     unsafe { verify_assert(a != b) };
 }
-
-unconstrained fn verify_assert(b: bool) {}

@@ -29,7 +29,6 @@ fn main(x: Field, y: pub myStruct, z: pub foo::bar::barStruct, a: pub foo::fooSt
 fn check_inner_struct(a: foo::fooStruct, z: foo::bar::barStruct) {
     assert(a.bar_struct.val == z.val);
     for i in 0..a.bar_struct.array.len() {
-        unsafe { verify_assert(a.bar_struct.array[i] == z.array[i]); }
+        assert(a.bar_struct.array[i] == z.array[i]);
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

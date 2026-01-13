@@ -16,7 +16,7 @@ fn simple_loop(upper_bound: u32, x: u32, y: u32) {
     for _ in 0..upper_bound {
         let mut z = x * y;
         z = z * x;
-        assert(z == 12);
+        assert_eq(z, 12);
     }
 }
 
@@ -24,8 +24,8 @@ fn loop_with_predicate(upper_bound: u32, x: u32, y: u32) {
     for _ in 0..upper_bound {
         if x == 5 {
             let mut z = U32_MAX * y;
-            assert(((3 * y as i8) * 127) == 12);
-            assert(z == 12);
+            assert_eq(((3 * y as i8) * 127), 12);
+            assert_eq(z, 12);
         }
     }
 }
@@ -35,8 +35,8 @@ fn array_read_loop(upper_bound: u32, x: u32) {
     for i in 0..upper_bound {
         for j in 0..upper_bound {
             for _ in 0..upper_bound {
-                assert(arr[i] == x);
-                assert(arr[j] == x);
+                assert_eq(arr[i], x);
+                assert_eq(arr[j], x);
             }
         }
     }
@@ -48,7 +48,6 @@ unconstrained fn loop_with_break_under_predicate(upper_bound: u32, x: u32, y: u3
             break;
         }
         let mut z = U32_MAX * y;
-        unsafe { verify_assert(z == 12); };
+        assert_eq(z, 12);
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

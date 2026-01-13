@@ -7,11 +7,10 @@ fn main(x: Field, active: bool) {
         }
 
         let x2 = foo(x);
-        unsafe { verify_assert(x2); }
+        assert(x2);
     }
 }
 
 unconstrained fn foo(_x: Field) -> bool {
     true
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

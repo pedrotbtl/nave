@@ -13,4 +13,3 @@ fn main(x: u8) {
         x - 8;
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -4,4 +4,3 @@ fn main(x: Field, y: pub Field) {
     std::println(x);
     std::println([x, y]);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

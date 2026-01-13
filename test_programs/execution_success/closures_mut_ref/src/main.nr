@@ -22,6 +22,5 @@ fn issue_2120() {
     set_x1(44);
     assert(*x1 == 44);
     set_x1(*x1);
-    unsafe { verify_assert(*x1 == 44); }
+    assert(*x1 == 44);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -20,4 +20,3 @@ mod Baz {
 fn main(works: Baz::Works, fails: Baz::BarStruct, also_fails: Bar::NewType) -> pub Field {
     works.a + fails.a + also_fails.a
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

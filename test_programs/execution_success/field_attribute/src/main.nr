@@ -1,6 +1,6 @@
 // Test integer addition: 3 + 4 = 7
 fn main(mut x: u32) {
-    unsafe { verify_assert(x > foo()); }
+    assert(x > foo());
 }
 
 #[field(bn254)]
@@ -17,4 +17,3 @@ fn foo() -> u32 {
 fn foo() -> u32 {
     3
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

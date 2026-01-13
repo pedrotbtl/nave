@@ -11,4 +11,3 @@ fn main(is_active: bool) -> pub EmbeddedCurvePoint {
         bad
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

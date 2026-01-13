@@ -29,4 +29,3 @@ fn lambdas_with_input_and_return_values(x: u32) -> u32 {
     };
     f(x)
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

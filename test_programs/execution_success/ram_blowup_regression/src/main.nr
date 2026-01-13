@@ -39,4 +39,3 @@ fn main(tx_effects_hash_input: [Field; TX_EFFECTS_HASH_INPUT_FIELDS]) -> pub Fie
     let blake2s_digest = blake2s_to_field(hash_input_flattened);
     blake2s_digest
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

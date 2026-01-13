@@ -18,6 +18,5 @@ fn main(x: Field, y: Field) {
     assert(mutable.0.1 == 0);
     assert(mutable.1 == 1);
     assert(mutable.2 == 7);
-    unsafe { verify_assert(mutable.3 == 3); }
+    assert(mutable.3 == 3);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

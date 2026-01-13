@@ -25,13 +25,13 @@ unconstrained fn nested_fn_that_allocates(value: u32) -> u32 {
 }
 
 unconstrained fn another_entry_point(x: [u32; 3]) {
-    assert(x[0] == 1);
-    assert(x[1] == 2);
-    assert(x[2] == 3);
+    unsafe { verify_assert(x[0] == 1); }
+    unsafe { verify_assert(x[1] == 2); }
+    unsafe { verify_assert(x[2] == 3); }
     assert(nested_fn_that_allocates(1) == 6);
     // x should be unchanged
-    assert(x[0] == 1);
-    assert(x[1] == 2);
+    unsafe { verify_assert(x[0] == 1); }
+    unsafe { verify_assert(x[1] == 2); }
     unsafe { verify_assert(x[2] == 3); }
 }
 unconstrained fn verify_assert(b: bool) { assert(false); }

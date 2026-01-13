@@ -20,6 +20,5 @@ fn main(x: Field, len3: [u8; 3], len4: [Field; 4]) {
     // Regression for #1023, ensure .len still works after calling to_le_bytes on a witness.
     // This was needed because normally .len is evaluated before acir-gen where to_le_bytes
     // on a witness is only evaluated during/after acir-gen.
-    unsafe { verify_assert(x.to_le_bytes::<8>().len() != 0); }
+    assert(x.to_le_bytes::<8>().len() != 0);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

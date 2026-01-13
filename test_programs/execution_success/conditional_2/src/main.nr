@@ -40,12 +40,10 @@ fn main(a: u32, mut c: [u32; 4]) {
 fn test5(a: u32) {
     if a > 1 {
         let q = a / 2;
-        unsafe { verify_assert(q == 2); }
+        assert(q == 2);
     }
 }
 
 fn foo2() -> Field {
     3
 }
-
-unconstrained fn verify_assert(b: bool) { assert(false); }

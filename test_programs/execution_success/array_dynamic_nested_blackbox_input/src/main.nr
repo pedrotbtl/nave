@@ -16,6 +16,5 @@ fn main(mut x: [Foo; 3], y: pub u32, hash_result: pub [u8; 32]) {
     // by setting the array using a dynamic index here
     hash_input[y - 1] = 0;
     let hash = std::hash::blake3(hash_input);
-    unsafe { verify_assert(hash == hash_result); };
+    assert_eq(hash, hash_result);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

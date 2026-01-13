@@ -13,4 +13,3 @@ fn sum_x(notes: [Field; 2], x: Field, y: Field) -> Field {
 unconstrained fn create_notes(x: Field, y: Field) -> [Field; 2] {
     [x, y]
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

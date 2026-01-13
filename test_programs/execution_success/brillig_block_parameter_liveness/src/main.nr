@@ -88,4 +88,3 @@ unconstrained fn main(conditions: [bool; 5]) -> pub Outer {
 
     out4
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

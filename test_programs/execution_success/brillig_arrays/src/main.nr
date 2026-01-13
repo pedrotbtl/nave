@@ -27,6 +27,5 @@ unconstrained fn read_write_array(x: [Field; 3]) {
 
     assert(x[0] == 1);
     assert(x[1] == 2);
-    unsafe { verify_assert(x[2] == 3); }
+    assert(x[2] == 3);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -123,7 +123,7 @@ fn main(x: u32, y: u32, a: Field, arr1: [u32; 9], arr2: [u32; 9]) {
     test_multiple3(y, y);
     //Regression test for issue #628:
     let result = first(arr_to_field(arr1), arr_to_field(arr2));
-    unsafe { verify_assert(result[0] == arr1[0] as Field); }
+    assert(result[0] == arr1[0] as Field);
 }
 // Issue #628
 fn arr_to_field(arr: [u32; 9]) -> [Field; 9] {
@@ -137,4 +137,3 @@ fn arr_to_field(arr: [u32; 9]) -> [Field; 9] {
 fn first(a: [Field; 9], _b: [Field; 9]) -> [Field; 9] {
     a
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

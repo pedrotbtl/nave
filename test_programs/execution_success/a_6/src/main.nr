@@ -7,6 +7,5 @@ fn main(x: [u8; 5], result: pub [u8; 32]) {
     let mut digest = std::hash::blake3(x);
     digest[0] = 5u8;
     digest = std::hash::blake3(x);
-    unsafe { verify_assert(digest == result); }
+    assert(digest == result);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -303,6 +303,5 @@ fn dynamic_slice_merge_push_then_pop(mut slice: [Field], x: u32, y: u32) {
     assert(elem == 30);
 
     let (_, elem) = slice.pop_back();
-    unsafe { verify_assert(elem == y as Field); }
+    assert(elem == y as Field);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

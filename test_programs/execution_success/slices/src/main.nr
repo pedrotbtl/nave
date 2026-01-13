@@ -46,10 +46,10 @@ fn main(x: Field, y: pub Field) {
     assert(append[4] == 5);
 
     let mapped = &[1, 2].map(|x| x + 1);
-    assert(mapped == &[2, 3]);
+    assert_eq(mapped, &[2, 3]);
 
-    assert(&[1 == 2, 3].fold(0, |acc, x| acc + x), 6);
-    assert(&[1 == 2, 3].reduce(|acc, x| acc + x), 6);
+    assert_eq(&[1, 2, 3].fold(0, |acc, x| acc + x), 6);
+    assert_eq(&[1, 2, 3].reduce(|acc, x| acc + x), 6);
     assert(&[2, 4, 6].all(|x| x > 0));
     assert(&[2, 4, 6].any(|x| x > 5));
 
@@ -344,6 +344,5 @@ fn regression_slice_call_result(x: Field, y: Field) {
 
 fn regression_4506() {
     let slice: [Field] = &[1, 2, 3];
-    unsafe { verify_assert(slice == slice); }
+    assert(slice == slice);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

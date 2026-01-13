@@ -8,6 +8,5 @@ fn main(x: u8, result: [u8; 32]) {
         digest = std::hash::blake3(a);
     }
 
-    unsafe { verify_assert(digest == result); }
+    assert(digest == result);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

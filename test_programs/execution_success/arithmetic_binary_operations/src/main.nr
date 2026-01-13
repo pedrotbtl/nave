@@ -5,7 +5,7 @@
 // x = 3, y = 4, z = 5
 fn main(x: Field, y: Field, z: Field) -> pub Field {
     //cast
-    unsafe { verify_assert(y as u1 == 0); }
+    assert(y as u1 == 0);
 
     let a = x + x; // 3 + 3 = 6
     let b = a - y; // 6 - 4 = 2
@@ -13,4 +13,3 @@ fn main(x: Field, y: Field, z: Field) -> pub Field {
     let d = c / a; // 10 / 6 (This uses field inversion, so we test it by multiplying by `a`)
     d * a
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

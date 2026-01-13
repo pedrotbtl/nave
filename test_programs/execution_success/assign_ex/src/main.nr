@@ -10,6 +10,5 @@ fn main(x: Field, y: Field) {
 fn regression_3057() {
     let mut array = [[0, 1], [2, 3]];
     (array[0])[1] = 2;
-    unsafe { verify_assert(array[0][1] == 2); }
+    assert(array[0][1] == 2);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

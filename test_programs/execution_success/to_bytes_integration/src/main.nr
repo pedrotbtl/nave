@@ -17,8 +17,7 @@ fn main(x: Field, a: Field) {
     let p_bits = std::field::modulus_le_bits();
     let z_bits: [u1; 254] = z.to_le_bits();
     assert(z_bits[0] == 0);
-    unsafe { verify_assert(p_bits[100] == z_bits[100]); }
+    assert(p_bits[100] == z_bits[100]);
 
     let _: [u1; 254] = a.to_le_bits();
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

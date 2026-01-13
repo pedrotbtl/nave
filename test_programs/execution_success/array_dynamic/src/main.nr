@@ -34,6 +34,5 @@ fn dyn_array(mut x: [u32; 5], y: u32, z: u32) {
     } else {
         x[y] = 0;
     }
-    unsafe { verify_assert(x[4] == 109); }
+    assert(x[4] == 109);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

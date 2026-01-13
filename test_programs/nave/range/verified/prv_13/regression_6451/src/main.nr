@@ -14,7 +14,7 @@ fn main(x: Field) {
     let y = unsafe { empty(x + 1) };
     let z = y + x + 1;
     let z1 = z + y;
-    assert(z + z1 != 3);
+    unsafe { verify_assert(z + z1 != 3); }
     let w = y + 2 * x + 3;
     unsafe { verify_assert(w + z1 != z); }
 }

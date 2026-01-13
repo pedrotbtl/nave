@@ -26,4 +26,3 @@ unconstrained fn func_2(mut a: Field, mut b: bool, mut ctx_depth: u32) -> [i8; 4
         func_2(a, func_1(b, 0, ctx_depth), ctx_depth)
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

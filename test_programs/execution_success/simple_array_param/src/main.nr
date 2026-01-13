@@ -4,4 +4,3 @@
 fn main(xs: [Field; 2]) -> pub Field {
     xs[1]
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

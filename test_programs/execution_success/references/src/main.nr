@@ -240,6 +240,5 @@ fn regression_2218_loop(x: Field, y: Field) {
 // Before, we never automatically dereferenced objects in method calls to their value types.
 // Now, we insert as many `*` as necessary to get to `S`.
 fn regression_2560(s_ref: &mut S) {
-    unsafe { verify_assert(s_ref.get_y() == 7); }
+    assert(s_ref.get_y() == 7);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

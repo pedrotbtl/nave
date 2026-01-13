@@ -90,7 +90,7 @@ fn multiplyByM(x: Field) -> Field {
 }
 
 fn arrays_neq(a: [Field; M], b: [Field; M]) {
-    unsafe { verify_assert(a != b); }
+    assert(a != b);
 }
 
 mod my_submodule {
@@ -117,4 +117,3 @@ impl Bar {
 
 // Regression for #1440
 global foo: Foo = Foo { a: Bar::get_a() };
-unconstrained fn verify_assert(b: bool) { assert(false); }

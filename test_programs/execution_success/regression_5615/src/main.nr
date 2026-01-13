@@ -10,4 +10,3 @@ unconstrained fn main() {
         map.insert(1, 2);
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

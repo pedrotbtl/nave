@@ -4,6 +4,5 @@ fn main(mut x: u32) {
     } else {
         x = (x + 1) / x;
     }
-    unsafe { verify_assert(x != 0); }
+    assert(x != 0);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

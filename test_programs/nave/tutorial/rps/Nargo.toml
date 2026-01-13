@@ -1,0 +1,7 @@
+[package]
+name = "rps"
+type = "bin"
+authors = [""]
+
+[dependencies]
+

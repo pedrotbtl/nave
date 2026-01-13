@@ -11,4 +11,3 @@ fn main() {
 
     println(f"pre three ({three} {three} {three}) post three");
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

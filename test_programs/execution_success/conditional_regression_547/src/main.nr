@@ -4,7 +4,7 @@ fn main(x: Field) -> pub Field {
     let arr: [u8; 2] = [1, 2];
     if arr[0] != arr[1] {
         for i in 0..1 {
-            unsafe { verify_assert(i != 2); }
+            assert(i != 2);
         }
     }
     // Regression for predicate simplification
@@ -18,4 +18,3 @@ fn safe_inverse(n: Field) -> Field {
         1 / n
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

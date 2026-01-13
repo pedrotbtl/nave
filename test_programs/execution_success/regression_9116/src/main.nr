@@ -62,6 +62,5 @@ fn main() {
     let foo: Foo = Foo { x: 0, y: [1, 2, 3] };
     let serialized = foo.serialize();
     let deserialized: Foo = Deserialize::deserialize(serialized);
-    unsafe { verify_assert(foo == deserialized); };
+    assert_eq(foo, deserialized);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

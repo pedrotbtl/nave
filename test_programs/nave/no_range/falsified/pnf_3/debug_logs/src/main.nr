@@ -70,7 +70,7 @@ fn main(x: Field, y: pub Field) {
     let closured_lambda = |x| x + one;
     println(f"closured_lambda: {closured_lambda}, sentinel: {sentinel}");
     println(closured_lambda);
-    verify_assert(x != y);
+    unsafe { verify_assert(x != y); }
     regression_4967();
 }
 

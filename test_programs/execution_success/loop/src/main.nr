@@ -2,14 +2,14 @@
 //
 // The features being tested is basic looping.
 fn main(six_as_u32: u32) {
-    assert(loop_excl(4) == six_as_u32);
-    assert(loop_incl(3) == six_as_u32);
+    assert_eq(loop_excl(4), six_as_u32);
+    assert_eq(loop_incl(3), six_as_u32);
     assert(plain_loop() == six_as_u32);
-    unsafe { verify_assert(never_loop() == 0); }
+    assert(never_loop() == 0);
 
     // Safety: testing context
     unsafe {
-        assert(basic_break() == true);
+        assert(basic_break() == true)
     }
 }
 
@@ -51,4 +51,3 @@ unconstrained fn basic_break() -> bool {
     }
     true
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

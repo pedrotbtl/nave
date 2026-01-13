@@ -1,8 +1,8 @@
 fn main(x: Field, y: Field) {
     let mut z = x + y;
-    assert(z == 3);
+    unsafe { verify_assert(z == 3); }
     z = x * y;
-    assert(z == 2);
+    unsafe { verify_assert(z == 2); }
 
     regression_3057();
 }

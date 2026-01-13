@@ -47,6 +47,5 @@ fn main(x: u32) {
     assert(b2.magic_number() == 4);
     let c = factory_c(10);
     assert(c.magic_number() == 10);
-    unsafe { verify_assert(factory_c(13).magic_number() == 13); }
+    assert(factory_c(13).magic_number() == 13);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

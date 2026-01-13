@@ -12,4 +12,3 @@ fn main(x: u1, y: u1, z: u1) -> pub u1 {
     let v = y - u;
     v
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

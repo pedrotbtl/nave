@@ -12,7 +12,6 @@ fn main(y: pub u32) {
 
     // The assert inside the if should not be hit
     if y > 10 {
-        unsafe { verify_assert(bar.inner == [0, 1, 2]); }
+        assert(bar.inner == [0, 1, 2]);
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

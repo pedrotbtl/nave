@@ -7,10 +7,9 @@ unconstrained fn main() -> pub bool {
             if (idx_c == 0) {
                 break
             } else {
-                unsafe { verify_assert(((1 / idx_b) >= idx_b)); }
+                assert(((1 / idx_b) >= idx_b), "NEVER");
             }
         }
     }
     true
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

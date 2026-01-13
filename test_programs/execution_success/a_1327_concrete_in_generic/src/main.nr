@@ -62,4 +62,3 @@ fn main(input: Field) -> pub Field {
     output
 }
 // ---
-unconstrained fn verify_assert(b: bool) { assert(false); }

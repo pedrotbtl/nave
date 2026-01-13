@@ -1,5 +1,6 @@
 fn main(c: bool) -> pub str<3> {
     let mut f = foo;
+    unsafe { verify_assert(c == true); }
     if c {
         f = bar;
     }

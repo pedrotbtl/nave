@@ -4,11 +4,10 @@
 fn main(x: [u8; 5], result: [u8; 32]) {
     // Safety: testing context
     unsafe {
-        unsafe { verify_assert(blake2s(x) == result); }
+        assert(blake2s(x) == result);
     }
 }
 
 unconstrained fn blake2s(x: [u8; 5]) -> [u8; 32] {
     std::hash::blake2s(x)
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

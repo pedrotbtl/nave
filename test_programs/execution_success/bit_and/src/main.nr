@@ -11,6 +11,5 @@ fn main(x: Field, y: Field, a: Field, b: Field) {
     //bitwise and with odd bits:
     let a_as_u8 = a as u8;
     let b_as_u8 = b as u8;
-    unsafe { verify_assert((a_as_u8 & b_as_u8) == a_as_u8); }
+    assert((a_as_u8 & b_as_u8) == a_as_u8);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

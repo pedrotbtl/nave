@@ -7,4 +7,3 @@ fn main(year: u32, min_age: u8) -> pub u32 {
         0
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

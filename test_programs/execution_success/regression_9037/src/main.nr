@@ -26,4 +26,3 @@ unconstrained fn func_3(a: ([bool; 1],), mut c: [[bool; 1]; 1], ctx_limit: &mut 
     }
     true
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

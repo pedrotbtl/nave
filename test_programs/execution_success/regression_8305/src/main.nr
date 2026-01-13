@@ -7,4 +7,3 @@ fn main(a: i32) -> pub i32 {
     }
     r
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

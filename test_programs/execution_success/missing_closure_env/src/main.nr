@@ -1,5 +1,5 @@
-fn main(mut x: Field) {
-    let x1 = &mut x;
+fn main(x: Field) {
+    let x1 = &mut 42;
     let set_x1 = |y| { *x1 = y; };
 
     assert(*x1 == 42);
@@ -7,7 +7,10 @@ fn main(mut x: Field) {
     assert(*x1 == 44);
     set_x1(*x1);
     assert(*x1 == 44);
-    unsafe { verify_assert(x == 42); }
+    assert(x == 42);
 }
 
-unconstrained fn verify_assert(b: bool) { assert(false); }
+#[test]
+fn test_main() {
+    main(42);
+}

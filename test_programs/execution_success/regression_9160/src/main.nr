@@ -19,4 +19,3 @@ unconstrained fn func_1(
         a
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

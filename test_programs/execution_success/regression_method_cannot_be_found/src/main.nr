@@ -20,4 +20,3 @@ fn main() {
     // Regression for:  cannot find this method
     b.log();
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

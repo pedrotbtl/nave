@@ -1,5 +1,5 @@
 fn bar(y: Field) {
-    assert(y != 0);
+    unsafe { verify_assert(y != 0); }
 }
 
 fn foo(x: Field) {

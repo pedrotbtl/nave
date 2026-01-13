@@ -16,10 +16,9 @@ fn main(x: Field) {
     let z1 = z + y;
     assert(z + z1 != 3);
     let w = y + 2 * x + 3;
-    unsafe { verify_assert(w + z1 != z); }
+    assert(w + z1 != z);
 }
 
 unconstrained fn empty(_: Field) -> Field {
     0
 }
-unconstrained fn verify_assert(b: bool) {}

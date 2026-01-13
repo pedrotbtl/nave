@@ -5,6 +5,5 @@ fn main(x: u32) {
     let fetched_value = array[x - 3];
     assert(fetched_value[0].0 == 1);
     assert(fetched_value[0].1[0] == 2);
-    unsafe { verify_assert(fetched_value[0].2[0] == 3); }
+    assert(fetched_value[0].2[0] == 3);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

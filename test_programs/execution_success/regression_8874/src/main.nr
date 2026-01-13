@@ -5,4 +5,3 @@ fn main(print: bool, i: u32) {
         println(array[i]);
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

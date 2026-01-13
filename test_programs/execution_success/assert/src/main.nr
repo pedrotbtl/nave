@@ -5,7 +5,6 @@ fn main(x: Field) {
 
 fn conditional(x: bool) -> Field {
     assert(x, f"Expected x to be true but got {x}");
-    unsafe { verify_assert(x == true, f"Expected x to be true but got {x}"); };
+    assert_eq(x, true, f"Expected x to be true but got {x}");
     1
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

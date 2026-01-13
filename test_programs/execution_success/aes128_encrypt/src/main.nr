@@ -35,6 +35,5 @@ fn main(inputs: str<12>, iv: str<16>, key: str<16>, output: str<32>) {
 
     // Safety: testing context
     let unconstrained_result = unsafe { cipher(inputs.as_bytes(), iv.as_bytes(), key.as_bytes()) };
-    unsafe { verify_assert(unconstrained_result == output_bytes); }
+    assert(unconstrained_result == output_bytes);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

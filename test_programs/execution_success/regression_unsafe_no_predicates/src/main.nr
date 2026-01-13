@@ -20,6 +20,5 @@ unconstrained fn get_block<let N: u32>(msg: [u8; N]) -> [u8; 2] {
 }
 
 fn verify_block<let N: u32>(msg: [u8; N], block: [u8; 2]) {
-    unsafe { verify_assert(block[0] == msg[0]); };
+    assert_eq(block[0], msg[0]);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

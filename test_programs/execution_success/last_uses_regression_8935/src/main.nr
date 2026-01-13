@@ -33,8 +33,7 @@ unconstrained fn case2(array: [u16; 1]) {
         if false {
             ()
         } else {
-            unsafe { verify_assert(array[0] != 0); }
+            assert(array[0] != 0);
         }
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

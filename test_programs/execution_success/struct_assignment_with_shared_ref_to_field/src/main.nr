@@ -4,7 +4,7 @@ fn main() {
     assert(a);
     assert(b);
     assert(c);
-    unsafe { verify_assert(d); }
+    assert(d);
 }
 
 fn plain_store() -> bool {
@@ -20,4 +20,3 @@ fn store_through_pointer() -> bool {
     *a = (true,);
     *b
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

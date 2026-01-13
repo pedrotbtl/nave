@@ -16,13 +16,13 @@ fn test_u16(x: u16) {
     let t = t1 + t2;
 
     let t4 = t - t2;
-    assert(t4 == t1);
+    unsafe { verify_assert(t4 == t1); }
 
     let mut small_int = x as u16;
     let shift = small_int << (x as u8);
-    assert(shift == 8);
+    unsafe { verify_assert(shift == 8); }
     assert(shift >> (x as u8) == small_int);
-    assert(shift >> 15 == 0);
+    unsafe { verify_assert(shift >> 15 == 0); }
     unsafe { verify_assert(shift << 15 == 0); }
 }
 unconstrained fn verify_assert(b: bool) { assert(false); }

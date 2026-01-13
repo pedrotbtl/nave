@@ -28,6 +28,5 @@ fn main(mut x: i32, mut y: i32, z: i32) {
     s1 = 1;
     s2 = -8;
     assert(s1 * s2 == -8);
-    unsafe { verify_assert(x / x * y == -8); }
+    assert(x / x * y == -8);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -5,7 +5,6 @@ pub(crate) global TYPE_INFERRED: u32 = 42;
 
 pub fn from_foo(x: [Field; bar::N]) {
     for i in 0..bar::N {
-        unsafe { verify_assert(x[i] == bar::N as Field); }
+        assert(x[i] == bar::N as Field);
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

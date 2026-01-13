@@ -3,6 +3,5 @@ fn main(mut x: u32, y: u32, z: u32) {
     let a = x % y;
     assert(x / y == z);
     assert(a == x - z * y);
-    unsafe { verify_assert(50_u64 % 9 == 5); }
+    assert(50_u64 % 9 == 5);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

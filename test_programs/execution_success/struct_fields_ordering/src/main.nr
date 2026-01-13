@@ -7,6 +7,5 @@ struct myStruct {
 
 fn main(y: pub myStruct) {
     assert(y.foo == 5);
-    unsafe { verify_assert(y.bar == 7); }
+    assert(y.bar == 7);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

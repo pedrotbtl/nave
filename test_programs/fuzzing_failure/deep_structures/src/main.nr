@@ -69,7 +69,7 @@ struct A {
 }
 // This program will fail when all the members of the struct except for a.b.c.d.e.f.g.h.i.j.j are true
 #[fuzz]
-fn main(a: A) {
+fn depth(a: A) {
     if a.a {
         if a.b.b {
             if a.b.c.c {
@@ -86,8 +86,8 @@ fn main(a: A) {
                                                         if a.b.c.d.e.f.g.h.i.j.k.l.m.n.n {
                                                             if a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.o {
                                                                 if a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.p
-                                                                    {
-                                                                        unsafe { verify_assert(false); }
+                                                                     {
+                                                                        assert(false);
                                                                     }
                                                             }
                                                         }
@@ -105,5 +105,3 @@ fn main(a: A) {
         }
     }
 }
-
-unconstrained fn verify_assert(b: bool) {}

@@ -3,4 +3,3 @@ fn main(a: Field) -> pub Field {
     std::as_witness(a);
     a
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

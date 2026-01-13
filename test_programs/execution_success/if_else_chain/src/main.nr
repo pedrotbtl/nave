@@ -9,7 +9,6 @@ fn main(a: u32, mut c: [u32; 4]) {
         // expect to match this case
         assert(c[3] == 0);
     } else {
-        unsafe { verify_assert(c[0] == 10); }
+        assert(c[0] == 10);
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

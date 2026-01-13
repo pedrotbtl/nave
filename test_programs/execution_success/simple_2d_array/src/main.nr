@@ -4,6 +4,5 @@ fn main(x: Field, y: Field, array_input: [[Field; 2]; 2]) {
     assert(array_input[0][1] == y);
 
     let arr: [[Field; 2]; 1] = [[3, 3]];
-    unsafe { verify_assert(arr[0] == array_input[1]); };
+    assert_eq(arr[0], array_input[1]);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

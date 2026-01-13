@@ -12,15 +12,15 @@ struct MyStruct {
 
 fn main(x: [Field; 2]) {
     let a: Foo<Field> = [1, 2];
-    assert(a[0] != x[0]);
+    unsafe { verify_assert(a[0] != x[0]); }
 
     let b: Bar = 2;
-    assert(x[0] == b);
+    unsafe { verify_assert(x[0] == b); }
 
     let c: u8 = 1;
     let d: u32 = 2;
     let e: Three = (c, d);
-    assert(e.0 == 1);
+    unsafe { verify_assert(e.0 == 1); }
 
     let s = MyStruct { foo: 10 };
     unsafe { verify_assert(s.foo == 10); }

@@ -8,6 +8,5 @@ unconstrained fn main(sorted_index: [u32; 2]) {
         sorted[i] = value; // On first iteration, we should not mutate the original constant array, RC should be > 1
     }
 
-    unsafe { verify_assert(sorted[1] == 55); };
+    assert_eq(sorted[1], 55);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

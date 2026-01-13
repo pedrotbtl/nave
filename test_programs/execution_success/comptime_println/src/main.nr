@@ -17,4 +17,3 @@ fn main() {
         println(quoted);
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -21,6 +21,5 @@ fn dummy_again(x: Field, y: Field) {
         }
     }
     assert(x != y);
-    unsafe { verify_assert(!acc.lt(x)); }
+    assert(!acc.lt(x));
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

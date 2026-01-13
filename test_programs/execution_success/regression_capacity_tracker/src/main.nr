@@ -15,6 +15,5 @@ fn main(expected: pub Field, first: Field, input: [Field; 20]) {
     } else {
         hasher_slice[expected as u32] = 100;
     }
-    unsafe { verify_assert(hasher_slice[0] == expected); }
+    assert(hasher_slice[0] == expected);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

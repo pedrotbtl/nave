@@ -7,9 +7,8 @@ fn main(x: u1, y: u1) {
 
 mod my_submodule {
     pub fn my_bool_or(x: u1, y: u1) {
-        unsafe { verify_assert(x | y == 1); }
+        assert(x | y == 1);
     }
 
     pub fn my_helper() {}
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

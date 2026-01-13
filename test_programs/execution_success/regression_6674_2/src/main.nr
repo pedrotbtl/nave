@@ -83,6 +83,5 @@ unconstrained fn main() {
     };
     output_composer.sort_ordered_values();
 
-    unsafe { verify_assert(previous_kernel.public_call_requests.storage[1] == 1); };
+    assert_eq(previous_kernel.public_call_requests.storage[1], 1, "equality");
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

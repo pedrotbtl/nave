@@ -9,4 +9,3 @@ fn main(a: bool) -> pub bool {
 fn func_4(a: u32) -> u32 {
     (a / (a % a))
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

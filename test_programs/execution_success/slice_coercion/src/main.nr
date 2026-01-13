@@ -22,7 +22,6 @@ fn main(expected: pub Field, first: Field) {
 
 fn regression_4967() {
     let var1: [(i32, u8)] = [(1, 2)];
-    unsafe { verify_assert(var1.len() == 1); }
+    assert(var1.len() == 1);
     std::println(var1);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

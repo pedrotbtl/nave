@@ -3849,7 +3849,6 @@ fn main(x: Field, y: pub Field) {
             acc += EXPONENTIATE[i][j];
         }
     }
-    unsafe { verify_assert(!acc.lt(x)); }
-    unsafe { verify_assert(x != y); }
+    assert(!acc.lt(x));
+    assert(x != y);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

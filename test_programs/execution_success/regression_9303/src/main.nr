@@ -15,4 +15,3 @@ unconstrained fn func_5(
         func_5(if (*a.1) { a } else { (a.0, (&mut c.1)) }, c, ctx_limit)
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

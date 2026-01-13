@@ -13,7 +13,7 @@ impl Serialize<1> for ValueNote {
 }
 
 fn check<let N: u32>(serialized_note: [Field; N]) {
-    unsafe { verify_assert(serialized_note[0] == 0); }
+    assert(serialized_note[0] == 0);
 }
 
 fn oopsie<Note, let N: u32>(note: Note)
@@ -28,4 +28,3 @@ where
 fn main(mut note: ValueNote) {
     oopsie(note);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

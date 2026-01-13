@@ -17,4 +17,3 @@ unconstrained fn func_4() -> bool {
     println(a);
     true
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

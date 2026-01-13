@@ -52,6 +52,5 @@ fn regression_4609_append_dynamic_slices(x: u32, y: u32) {
     let sl3 = sl.append(sl2);
     assert(sl3[0] == 10);
     assert(sl3[4] == y);
-    unsafe { verify_assert(sl3[5] == 6); }
+    assert(sl3[5] == 6);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

@@ -6,4 +6,3 @@ unconstrained fn main(c: bool) -> pub bool {
     };
     *b[0].0
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

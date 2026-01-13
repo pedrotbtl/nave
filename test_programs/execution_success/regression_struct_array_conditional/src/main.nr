@@ -32,8 +32,7 @@ fn main(x: [foo; 3], y: u32, z: u32) -> pub u8 {
         // first element is compatible
         assert(y as u8 < b[y].counter);
         // fallback
-        unsafe { verify_assert(y as u8 < c[y].counter); }
+        assert(y as u8 < c[y].counter);
     }
     x[0].counter
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

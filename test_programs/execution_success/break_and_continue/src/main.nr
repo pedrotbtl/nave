@@ -11,6 +11,5 @@ unconstrained fn main() {
         count += 1;
     }
 
-    unsafe { verify_assert(count == 4); }
+    assert(count == 4);
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

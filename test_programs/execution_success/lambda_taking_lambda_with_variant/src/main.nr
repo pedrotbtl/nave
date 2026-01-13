@@ -15,4 +15,3 @@ unconstrained fn func_3(b: unconstrained fn(unconstrained fn(u128) -> bool) -> b
 unconstrained fn func_1(a: u128) -> bool {
     a > 0
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

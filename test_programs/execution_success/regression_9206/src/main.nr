@@ -8,4 +8,3 @@ fn main(i: u32) -> pub u32 {
 unconstrained fn func_3(_a: [u128; 0]) -> [[u128; 0]; 2] {
     G_A
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }

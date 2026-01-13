@@ -11,7 +11,6 @@ fn basic_checks(x: u32, y: u32) {
     if x > y {
         assert(x == 10);
     } else {
-        unsafe { verify_assert(y == 20); }
+        assert(y == 20);
     }
 }
-unconstrained fn verify_assert(b: bool) { assert(false); }
