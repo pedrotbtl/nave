@@ -7,7 +7,7 @@ In a zero-knowledge setting, we want to prove that:
 “The game was played correctly according to the rules without revealing the players’ moves.”
 
 Taking inspiration from the blog: https://dev.to/spalladino/a-beginners-intro-to-coding-zero-knowledge-proofs-c56,
-`src/main.nr` contains a simplified version of the program.
+[src/main](src/main.nr) contains a simplified version of the program.
 
 RPS is a perfect minimal example because:
 
@@ -54,7 +54,7 @@ assert((x == 0) | (x == 1) | (x == 2));
 assert((y == 0) | (y == 1) | (y == 2));
 ```
 
-Though there is a relatively easy way to contrain this via modelling the parameters `x` and `y` as `u8` (highlighted below) but it generates `BLACKBOX::RANGE` opcode in ACIR which is hard to evaluate.
+Though there is a relatively easy way to constrain this via modelling the parameters `x` and `y` as `u8` (highlighted below) but it generates `BLACKBOX::RANGE` opcode in ACIR which is hard to evaluate.
 
 ```
 assert((x as u8) <= 2);

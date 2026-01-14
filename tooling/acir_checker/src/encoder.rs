@@ -567,30 +567,41 @@ impl<'a, F: AcirField> Translator<'a, F> {
 
     fn translate_range(&mut self, input: &FunctionInput<F>) {
         // TODO: optimise to combine all ranges over the same variable
-        if input.num_bits() >= 1 {
-            match input.input() {
-                ConstantOrWitnessEnum::Constant(_) => {
-                    println!("unimplemented constant input");
-                    return;
-                }
-                ConstantOrWitnessEnum::Witness(witness) => {
-                    if self.use_int {
-                        self.translate_range_int(witness, input.num_bits());
-                    } else {
-                        self.translate_range_bitsum(witness, input.num_bits());
-                    }
+        match input.input() {
+            ConstantOrWitnessEnum::Constant(_) => {
+                println!("unimplemented constant input");
+                return;
+            }
+            ConstantOrWitnessEnum::Witness(witness) => {
+                if self.use_int {
+                    self.translate_range_int(witness, input.num_bits());
+                } else {
+                    self.translate_range_bitsum(witness, input.num_bits());
                 }
             }
         }
+    
     }
 
     fn translate_range_int(&mut self, witness: Witness, num_bits: u32) {
+        if num_bits == 0 {
+            let wit = self.new_const_int(witness);
+            let zero = self.zero_int();
+            self.solver.assert(wit.eq(zero));
+            return;
+        }
         let value = self.new_element_int(F::pow(&2u32.into(), &num_bits.into()));
         let wit = self.new_const_int(witness);
         self.solver.assert(wit.lt(value));
     }
 
     fn translate_range_bitsum(&mut self, witness: Witness, num_bits: u32) {
+        if num_bits == 0 {
+            let wit = self.new_const(witness);
+            let zero = self.zero();
+            self.solver.assert(wit.eq(zero));
+            return;
+        }
         self.encode_bitsum(witness, num_bits as usize);
     }
 

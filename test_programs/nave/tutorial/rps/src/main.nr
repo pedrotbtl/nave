@@ -34,9 +34,9 @@ fn main(x: Field, y: Field) -> pub Field {
 
     // Verification of tie conditions
     // If there is a tie, the result must be 3
-    unsafe { verify_assert(!(((x == 0) & (y == 0)) | ((x == 1) & (y == 1)) | ((x == 2) & (y == 2))) | (result == 3)); }
+    unsafe { verify_assert(!(x == y) | (result == 3)); }
     // If the result is 3, then it must be a tie
-    unsafe { verify_assert((((x == 0) & (y == 0)) | ((x == 1) & (y == 1)) | ((x == 2) & (y == 2))) | !(result == 3)); }
+    unsafe { verify_assert((x == y) | !(result == 3)); }
 
     result
 }
