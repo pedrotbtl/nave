@@ -27,7 +27,7 @@ they represent, instead, verification conditions that will be checked by the ver
 
 The main components of NAVe are in [tooling/acir_checker](tooling/acir_checker).
 
-A simple tutorial for NAVe is in [test_programs/nave/tutorial/rps]([test_programs/nave/tutorial/rps]).
+A simple tutorial for NAVe is in [test_programs/nave/tutorial/rps](test_programs/nave/tutorial/rps).
 
 NAVe test programs are in [test_programs/nave](test_programs/nave).
 
