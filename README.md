@@ -31,6 +31,8 @@ A simple tutorial for NAVe is in [test_programs/nave/tutorial/rps](test_programs
 
 NAVe test programs are in [test_programs/nave](test_programs/nave).
 
+The paper describing NAVe  --- and giving a formal semantics to (a subset of) ACIR --- is at: [https://arxiv.org/abs/2601.09372](https://arxiv.org/abs/2601.09372)
+
 ## Quick Start
 
 Read the [installation section][Getting started] from the [Noir docs][Documentation].
